@@ -51,4 +51,5 @@ export const lightTheme:DefaultTheme = {
     md: "2.5px solid $black",
     sm: "2px solid $black",
   },
+  background: "#fff",
 };

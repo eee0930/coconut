@@ -46,18 +46,11 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    background-color: $white;
+    background-color: ${props => props.theme.background};
     color: $black;
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-  }
-  .coco-container {
-    padding: ${props => props.theme.padding.sm};
-  }
-  .coco-main-container {
-    overflow-y: auto;
-    max-height: calc(100vh - ${props => props.theme.sideMenu.sm});
   }
   .hidden-section {
     padding: 0;
@@ -67,33 +60,6 @@ export const GlobalStyle = createGlobalStyle`
     display: none;
   }
   
-  @media (min-width: 768px) {
-    .baseLayout-menu {
-      width: ${props => props.theme.sideMenu.md};
-    }
-    .coco-container {
-      padding: ${props => props.theme.padding.md};
-    }
-    .coco-main-container {
-      max-height: calc(100vh - ${props => props.theme.playerH.md});
-    }
-  }
-  @media (min-width: 992px) {
-    .baseLayout-menu {
-      width: 270px;
-    }
-  }
-  @media (min-width: 1200px) {
-    .baseLayout-menu {
-      width: ${props => props.theme.sideMenu.lg};
-    }
-    .coco-container {
-      padding: ${props => props.theme.padding.lg};
-    }
-    .coco-main-container {
-      max-height: calc(100vh - ${props => props.theme.playerH.lg});
-    }
-  }
 `;
 
 export const BasicStyle = createGlobalStyle`
@@ -517,64 +483,12 @@ export const CocoStyles = createGlobalStyle`
   font-stretch: 0.05em;
   line-height: 0.83;
 }
-.button {
-  cursor: pointer;
-  min-width: 50px;
-  position: relative;
-  display: block;
-  border: none;
-  background-color: transparent;
-  padding: 1.125em 2.5em 0.9375em;
-
-  font-family: $font-title, cursive;
-  letter-spacing: -0.04em;
-  word-spacing: 0.03em;
-  font-stretch: 0.05em;
-  font-size: 1.2rem;
-  color: $white;
-
-  .button-back, .button-front {
-    width: 100%;
-    height: 100%;
-    border: $box-line-sm;
-    display: block;
-    padding: 0.3rem 0 0.4rem;
-    border-radius: 8px;
-    position: absolute;
-  }
-  .button-back {
-    background-color: $black;
-    top: 3px;
-    left: 3px;
-    z-index: 0;
-  }
-  .button-front {
-    background-color: $main11;
-    text-align: center;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    transition: top 0.3s ease, left 0.3s ease;
-  }
-  &:hover .button-front,
-  &:focus .button-front {
-    top: 1px;
-    left: 1px;
-  }
-}
-@media (min-width: 768px) {
-  .button {
-    .button-back, .button-front {
-      border: $box-line;
-    }
-  }
-}
 
 .likeBtn.liked .fa-solid.fa-heart {
-  color: $main12;
+  color: ${props => props.theme.main1.main1};
 }
 .likeBtn.active i {
-  color: $main12;
+  color: ${props => props.theme.main1.main1};
   animation: bigToSmall 0.5s ease;
 }
 

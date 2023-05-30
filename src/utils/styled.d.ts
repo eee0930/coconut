@@ -54,5 +54,6 @@ declare module 'styled-components' {
       md: string;
       sm: string;
     }
+    background: string;
   }
 }
