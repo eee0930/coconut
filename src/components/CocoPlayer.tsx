@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { nowPlayingState } from "../atoms";
 import { PlayerContainer, ProgressSection, ProgressBar, PlayerAlbumImg,
   ControllerSection, SongInfo, ControllerCover, ControlOthers } 
   from "../utils/components/CocoPlayerStyles";
 
 function CocoPlayer() {
+  const nowPlaying = useRecoilValue(nowPlayingState);
+  
   return <PlayerContainer>
     {/* [1. progress bar]--------------------------------------------------- */}
     <ProgressSection>
@@ -15,21 +19,21 @@ function CocoPlayer() {
       <SongInfo className="col row align-self-center">
         {/* 앨범 이미지 */}
         <div className="col-auto align-self-center">
-          <Link to="/album/441690797">
+          <Link to={`/album/${nowPlaying.alid}`}>
             <PlayerAlbumImg src={`${process.env.PUBLIC_URL}/img/default_paper.png`} 
-              style={{ backgroundImage: `url(https://e-cdns-images.dzcdn.net/images/cover/14ae5e519293803d00429ba2e401097c/56x56-000000-80-0-0.jpg)` }}/>
+              style={{ backgroundImage: `url(${nowPlaying.imageSm})` }}/>
           </Link>
         </div>
         {/* 노래 제목, 가수 이름 */}
         <div className="info col col-md-auto align-self-center">
           <div className="name-cover">
-            <Link to="/song/2284968167">
-              <span>Queencard</span>
+            <Link to={`/music/${nowPlaying.tid}`}>
+              <span>{nowPlaying.name}</span>
             </Link>
           </div>
           <div className="artist-cover">
-            <Link to="/artist/15065941">
-              <span>(G)I-DLE</span>
+            <Link to={`/artist/${nowPlaying.arid}`}>
+              <span>{nowPlaying.artist}</span>
             </Link>
           </div>
         </div>
