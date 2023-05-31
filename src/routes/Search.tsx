@@ -1,5 +1,5 @@
 
-const Search = () => {
+function Search () {
   return null;
 }
 

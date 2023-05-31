@@ -14,7 +14,7 @@ const Image = styled.img`
 
 function ErrorComponent() {
     return <ErrorContainer>
-        <Link to="/"><Image src={process.env.PUBLIC_URL + '/img/error.png'} /></Link>
+        <Link to="/"><Image src={`${process.env.PUBLIC_URL}/img/error.png`} /></Link>
         <h1>This Component Crashed.</h1>
     </ErrorContainer>;
 }
