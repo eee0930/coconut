@@ -46,7 +46,7 @@ export const ControllerSection = styled.div`
   width: 100%;
 
   .btn {
-    color: $white;
+    color: ${props => props.theme.white.darker};
     font-size: 1.4rem;
     background-color: transparent;
     width: 40px;
@@ -87,7 +87,7 @@ export const SongInfo = styled.div`
 `;
 export const ControllerCover = styled.div`
   text-align: center;
-
+  
   @media (min-width: 768px) {
     text-align: center;
     .btn {margin: 0 5px;}

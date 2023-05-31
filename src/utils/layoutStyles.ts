@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const BaseLayoutContainer = styled.div`
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+`;
+
 export const CocoContainer = styled.div`
   padding: ${props => props.theme.padding.sm};
   @media (min-width: 768px) {
@@ -21,9 +28,15 @@ export const CocoMainContainer = styled.div`
   } 
 `;
 
-export const baseLayoutMenu = styled.div`
+export const BaseLayoutMenu = styled.div`
   width: ${props => props.theme.sideMenu.md};
   @media (min-width: 1200px) {
     width: ${props => props.theme.sideMenu.lg};
   } 
+`;
+
+export const MobileSideMenuContainer = styled.div`
+  @media (min-width: 768px) {
+    display: none !important;
+  }
 `;

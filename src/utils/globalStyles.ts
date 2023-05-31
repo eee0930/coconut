@@ -470,14 +470,40 @@ export const BasicStyle = createGlobalStyle`
     align-self: end !important;
   }      
   .text-center {text-align: center !important}
-
-
-
+  .btn {
+    display: inline-block;
+    font-weight: 400;
+    height: 35px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    background-color: transparent;
+    padding: 0;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: all .15s ease-in-out;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    opacity: 0.5;
+    -ms-filter: grayscale(0.4);
+    filter: grayscale(0.4);
+  }
+  .mobile-hidden {display: none;}
+  @media (min-width: 768px) {
+    .mobile-hidden {display: inline-block;}
+  }
 `;
 
 export const CocoStyles = createGlobalStyle`
 .title {
-  font-family: $font-title, cursive;
+  font-family: ${props => props.theme.title}, cursive;
   letter-spacing: -0.04em;
   word-spacing: 0.03em;
   font-stretch: 0.05em;
@@ -490,6 +516,180 @@ export const CocoStyles = createGlobalStyle`
 .likeBtn.active i {
   color: ${props => props.theme.main1.main1};
   animation: bigToSmall 0.5s ease;
+}
+.play-list-icon .fa-music {
+  font-size: 0.5em;
+  background-color: ${props => props.theme.main1.main1};
+  padding: 1px;
+  position: relative;
+  left: -8px;
+  top: -1px;
+}
+
+input.coco-form {
+  width: 100%;
+  max-width: 250px;
+  height: 40px;
+  border: solid 2px $blackd;
+  border-radius: 8px;
+  padding: 2px 7px;
+}
+// /* radio, checkbox */
+input.option-input, 
+input.coco-form, 
+textarea.coco-form,
+select {
+	-webkit-appearance: none; 
+	-moz-appearance: none; 
+	appearance: none;
+}
+select {
+	//background-image: url('/images/common/icon/angle_down.svg') !important;
+	background-size: 10px auto;
+	background-repeat: no-repeat;
+	background-position: calc(100% - 5px) center;
+}
+// /* checkbox & radio */
+.option-input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	position: relative;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 17px;
+	width: 17px;
+	-webkit-transition: background 0.1s ease-out 0s;
+	transition: background 0.1s ease-out 0s;
+	background: #cdd2d7;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	margin-right: 0.1rem;
+	outline: none;
+	position: relative;
+	z-index: 2;
+}
+.option-input:hover {background: #9faab7;}
+.option-input:checked,
+input.option-input[type="radio"]:checked,
+input.option-input[type="checkbox"]:checked {
+	background: ${props => props.theme.main1.main2};
+	color: #fff !important;
+}
+.option-input:checked::before,
+input.option-input[type="radio"]:checked::before,
+input.option-input[type="checkbox"]:checked::before {
+	height: 17px;
+	width: 17px;
+	position: absolute;
+	content: '\2714';
+	top: 0.5px;
+	color: #fff !important;
+	display: inline-block;
+	font-size: 12px;
+  font-style: normal !important;
+	text-align: center;
+	line-height: 17px;
+	font-weight: 800;
+}
+.option-input:checked::after,
+input.option-input[type="radio"]:checked::after,
+input.option-input[type="checkbox"]:checked::after {
+	-webkit-animation: click-wave 0.65s;
+	-moz-animation: click-wave 0.65s;
+	animation: click-wave 0.65s;
+	background: ${props => props.theme.main1.main2};
+	content: '';
+	display: block;
+	position: relative;
+	z-index: 1;
+}
+.option-input.checkbox {border-radius: 2px;}
+.option-input.checkbox::after {border-radius: 2px;}
+.option-input.radio {border-radius: 50%;}
+.option-input.radio::after {border-radius: 50%;}
+
+@media (max-width: 767.5px) {
+	.option-input {
+		height: 20px;
+		width: 20px;
+		top: 5px;
+	}
+	.option-input:checked::before {
+		height: 20px;
+		width: 20px;
+		top: 0.8px;
+		font-size: 15px;
+		line-height: 20px;
+	}
+	.option-input.radio {
+		height: 22px;
+		width: 22px;
+		margin-bottom: -0.15rem;
+	}
+	.option-input:checked::before, 
+	input.option-input[type="checkbox"]:checked::before {
+		height: 20px;
+		width: 20px;
+		line-height: 20px;
+	}
+	
+	.option-input.radio:checked::before, 
+	input.option-input[type="radio"]:checked::before {
+		height: 22px;
+		width: 22px;
+		line-height: 22px;
+	}
+	.option-input:checked,
+	input.option-input[type="radio"]:checked,
+	input.option-input[type="checkbox"]:checked {
+		-webkit-animation: jelly .5s ease;
+		animation: jelly .5s ease;
+	}
+}
+// /* 페이지 첫 진입 시 */
+.coco-page-fadein {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 100vh;
+	z-index: 1000;
+	opacity: 0;
+	background-color: ${props => props.theme.main1.main2};
+	width: 100vw;
+	height: 0;
+	-webkit-animation: cocoPageFadeIn 1s ease;
+	animation: cocoPageFadeIn 1s ease;
+}
+
+@keyframes cocoPageFadeIn {
+	0%, 50% {
+		bottom: 0;
+		height: 100vh;
+		opacity: 1;
+	}
+	100% {
+		bottom: 100vh;
+		height: 0;
+		opacity: 0;
+	}
+}
+// /* Glass Morphism */
+.coco-glass {
+	background: rgba(175, 148, 160, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	-webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 10px;
+	border: 1px solid rgba(175, 148, 160, 0.18);
 }
 
 // jelly effect

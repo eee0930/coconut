@@ -32,12 +32,12 @@ function CocoPlayer() {
               <span>(G)I-DLE</span>
             </Link>
           </div>
-          {/* 좋아요 (member) */}
-          <div className="col-md mobile-hidden align-self-center">
-            <button className="likeBtn btn">
-              <i className="fa-regular fa-heart" />
-            </button>
-          </div>
+        </div>
+        {/* 좋아요 (member) */}
+        <div className="col-md mobile-hidden align-self-center">
+          <button className="likeBtn btn">
+            <i className="fa-regular fa-heart" />
+          </button>
         </div>
       </SongInfo>
       {/* [2.2 플레이어 컨트롤러]---------- */}

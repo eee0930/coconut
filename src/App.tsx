@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { lightTheme, darkTheme } from './utils/theme';
 import { ThemeProvider } from 'styled-components';
 // utils
-import { GlobalStyle, BasicStyle } from './utils/globalStyles';
+import { GlobalStyle, BasicStyle, CocoStyles } from './utils/globalStyles';
 import { useRecoilValue } from "recoil";
 import { isDarkThemeState } from "./atoms";
 
@@ -12,6 +12,7 @@ function App() {
     <ThemeProvider theme={isDarkTheme? darkTheme: lightTheme}>
       <GlobalStyle />
       <BasicStyle />
+      <CocoStyles />
       <Outlet />
     </ThemeProvider>
   );
