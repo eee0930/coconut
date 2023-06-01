@@ -13,6 +13,7 @@ export interface INowPlayingState {
   duration: number;
 };
 
+
 const { persistAtom } = recoilPersist({
   key: "cocoMusicPersist",
   storage: localStorage,

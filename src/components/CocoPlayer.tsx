@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { nowPlayingState } from "../atoms";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { nowPlayingState, INowPlayingState } from "../atoms";
 import { PlayerContainer, ProgressSection, ProgressBar, PlayerAlbumImg,
   ControllerSection, SongInfo, ControllerCover, ControlOthers } 
   from "../utils/components/CocoPlayerStyles";
 
 function CocoPlayer() {
-  const nowPlaying = useRecoilValue(nowPlayingState);
+  const [savedNowPlaying, setSavedNowPlaying] = useRecoilState(nowPlayingState);
+  const [nowPlaying, setNowPlaying] = useState(savedNowPlaying);
+  useEffect(() => {
+    setNowPlaying(savedNowPlaying);
+  }, [savedNowPlaying]);
   
   return <PlayerContainer>
     {/* [1. progress bar]--------------------------------------------------- */}
