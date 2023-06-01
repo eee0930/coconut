@@ -20,6 +20,7 @@ jobs:
         REACT_APP_RAPID_API_KEY: ${{ secrets.REACT_APP_RAPID_API_KEY }}
         REACT_APP_RAPID_ROOT: ${{ secrets.REACT_APP_RAPID_ROOT }}
         REACT_APP_DEEZER_HOST: ${{ secrets.REACT_APP_DEEZER_HOST }}
+
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.0.0
       with:
@@ -31,9 +32,3 @@ jobs:
         branch: gh-pages
         folder: build
       
-    - uses: actions/checkout@v2
-      with:
-        repository: 'input-output-hk/cardano-node'
-    - name: delete all
-      run: | 
-        rm -rf ** && find . -name . -o -prune -exec rm -rf -- {} +
