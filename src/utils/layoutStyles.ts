@@ -40,3 +40,41 @@ export const MobileSideMenuContainer = styled.div`
     display: none !important;
   }
 `;
+
+export const PageFadeIn = styled.div`
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 1000;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+	opacity: 0;
+	background-color: ${props => props.theme.main4.side};
+	width: 100vw;
+	height: 0;
+  transform: translate(-50%, -50%);
+	-webkit-animation: cocoPageFadeIn 1s ease-in-out;
+	animation: cocoPageFadeIn 1s ease-in-out;
+
+  @keyframes cocoPageFadeIn {
+    0%, 10% {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      opacity: 1;
+    }
+    80% {
+      width: 200vw;
+      height: 200vw;
+      border-radius: 0;
+      opacity: 1;
+    }
+    100% {
+      width: 200vw;
+      height: 200vw;
+      border-radius: 0;
+      opacity: 0;
+    }
+  }
+`;
