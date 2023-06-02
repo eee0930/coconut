@@ -653,34 +653,7 @@ input.option-input[type="checkbox"]:checked::after {
 		animation: jelly .5s ease;
 	}
 }
-// /* 페이지 첫 진입 시 */
-.coco-page-fadein {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 100vh;
-	z-index: 1000;
-	opacity: 0;
-	background-color: ${props => props.theme.main1.main2};
-	width: 100vw;
-	height: 0;
-	-webkit-animation: cocoPageFadeIn 1s ease;
-	animation: cocoPageFadeIn 1s ease;
-}
 
-@keyframes cocoPageFadeIn {
-	0%, 50% {
-		bottom: 0;
-		height: 100vh;
-		opacity: 1;
-	}
-	100% {
-		bottom: 100vh;
-		height: 0;
-		opacity: 0;
-	}
-}
 // /* Glass Morphism */
 .coco-glass {
 	background: rgba(175, 148, 160, 0.25);
