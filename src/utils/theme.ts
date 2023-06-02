@@ -47,9 +47,9 @@ export const lightTheme:DefaultTheme = {
     sm: "90px",
   },
   boxLine: {
-    lg: "3px solid $black",
-    md: "2.5px solid $black",
-    sm: "2px solid $black",
+    lg: "3px solid rgb(26, 26, 26)",
+    md: "2.5px solid rgb(26, 26, 26)",
+    sm: "2px solid rgb(26, 26, 26)",
   },
   background: "#fff",
 };
@@ -101,9 +101,9 @@ export const darkTheme:DefaultTheme = {
     sm: "90px",
   },
   boxLine: {
-    lg: "3px solid $black",
-    md: "2.5px solid $black",
-    sm: "2px solid $black",
+    lg: "3px solid #e3cc9f",
+    md: "2.5px solid #e3cc9f",
+    sm: "2px solid #e3cc9f",
   },
   background: "#fff",
 };

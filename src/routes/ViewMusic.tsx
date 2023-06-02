@@ -1,5 +1,5 @@
-function Music() {
+function VeiwMusic() {
   return null;
 }
 
-export default Music;
+export default VeiwMusic;

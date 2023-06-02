@@ -14,6 +14,7 @@ import ListMixTape from "./routes/ListMixTape";
 import ViewAlbum from "./routes/ViewAlbum";
 import ViewMusic from "./routes/ViewMusic";
 import ViewArtist from "./routes/ViewArtist";
+import ListChart from "./routes/ListChart";
 
 const router = createHashRouter([
   {
@@ -45,6 +46,9 @@ const router = createHashRouter([
           },{
             path: "artist/:id",
             element: <ViewArtist />,
+          },{
+            path: "chart",
+            element: <ListChart />,
           }
         ],
         errorElement: <ErrorComponent />,

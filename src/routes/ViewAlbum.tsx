@@ -1,5 +1,5 @@
-function Album() {
+function ViewAlbum() {
   return null;
 }
 
-export default Album;
+export default ViewAlbum;

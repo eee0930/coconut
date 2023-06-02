@@ -1,5 +1,5 @@
-function MixTape() {
+function ListMixTape() {
   return null;
 }
 
-export default MixTape;
+export default ListMixTape;
