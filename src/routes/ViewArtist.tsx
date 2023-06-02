@@ -1,5 +1,5 @@
-function Artist() {
+function ViewArtist() {
   return null;
 }
 
-export default Artist;
+export default ViewArtist;

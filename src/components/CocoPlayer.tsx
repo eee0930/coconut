@@ -215,6 +215,10 @@ function CocoPlayer() {
       </SongInfo>
       {/* [2.2 플레이어 컨트롤러]---------- */}
       <ControllerCover className="col-auto align-self-center">
+        {/* 반복재생 */}
+        <button className="btn mobile-hidden">
+          <i className="fa-solid fa-rotate"/>
+        </button>
         {/* 이전 곡 */}
         <button onClick={() => handleClickNext(false)} className="btn mobile-hidden">
           <i className="fa-solid fa-backward-step"/>
@@ -231,6 +235,10 @@ function CocoPlayer() {
         {/* 다음 곡 */}
         <button onClick={() => handleClickNext(true)} className="btn">
           <i className="fa-solid fa-forward-step"/>
+        </button>
+        {/* 랜덤재생 */}
+        <button className="btn mobile-hidden">
+          <i className="fa-solid fa-shuffle"/>
         </button>
       </ControllerCover>
       {/* [2.3 볼륨과 플레이리스트]----------  */}
