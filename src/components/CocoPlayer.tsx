@@ -7,12 +7,27 @@ import { PlayerContainer, ProgressSection, ProgressBar, PlayerAlbumImg,
   from "../utils/components/CocoPlayerStyles";
 import { Loader } from "../utils/globalStyles";
 
+const designTime = (time: number) => {
+  const seconds = String((time * 1) % 60).padStart(2, "0");
+  let [minutes, hours] = ["", ""];
+  let displayTime = `00:${seconds}`;
+  if(time >= 60) {
+    minutes = String(Math.floor(time / 60) % 60).padStart(2, "0");
+    displayTime = `${minutes}:${seconds}`;
+  }
+  if(time >= 3600) {
+    hours = String(Math.floor(time / 3600)).padStart(2, "0");
+    displayTime = `${hours}:${minutes}:${seconds}`;
+  }
+  return displayTime;
+}
+
 function CocoPlayer() {
   const playList = useRecoilValue(playListState);
   const [nowPlaying, setNowPlaying] = useRecoilState(nowPlayingState);
   const [controllerSetting, setControllerSetting] = useRecoilState(controllerSettingState);
   const [isLoading, setIsLoading] = useState(false);
-  const [isNewMusic, setIsNewMusic] = useState(true);
+  //const [isNewMusic, setIsNewMusic] = useState(true);
   const [isPlay, setIsPlay] = useState(false);
   const [progressSize, setProgressSize] = useState(1);
   const [progress, setProgress] = useState(0);
@@ -22,9 +37,10 @@ function CocoPlayer() {
   // 오디오 정보
   const [audio, setAudio] = useState(new Audio(nowPlaying.track.preview));
 
+  let isNewMusic: boolean;
   useEffect(() => {
     setAudio(new Audio(nowPlaying.track.preview));
-    const time = nowPlaying.track.duration;
+    const time = Math.round(audio.duration) || nowPlaying.track.duration;
     setDurationTime(time);
     setProgressSize(100 / time);
     handleNewAudioSetting();
@@ -36,8 +52,8 @@ function CocoPlayer() {
     if(isPlay) {
       progressTimer = setInterval(() => {
         setProgress((prev) => prev + progressSize);
-        setPlayTime((prev) => prev + 1);
-      }, 1000);
+        setPlayTime(Math.round(audio.currentTime));
+      }, 500);
       return () => clearInterval(progressTimer);
     } else {
       clearInterval(progressTimer);
@@ -45,26 +61,9 @@ function CocoPlayer() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlay]);
 
-  const designTime = (time: number) => {
-    if(Number.isNaN(time)) {
-      time = nowPlaying.track.duration;
-    }
-    const seconds = String((time * 1) % 60).padStart(2, "0");
-    let [minutes, hours] = ["", ""];
-    let displayTime = `00:${seconds}`;
-    if(time >= 60) {
-      minutes = String(Math.floor(time / 60) % 60).padStart(2, "0");
-      displayTime = `${minutes}:${seconds}`;
-    }
-    if(time >= 3600) {
-      hours = String(Math.floor(time / 3600)).padStart(2, "0");
-      displayTime = `${hours}:${minutes}:${seconds}`;
-    }
-    return displayTime;
-  }
-
   const handleNewAudioSetting = () => {
-    setIsNewMusic(true);
+    isNewMusic = true;
+    console.log(2, isNewMusic);
     setProgress(0);
     setPlayTime(0);
   };
@@ -74,7 +73,18 @@ function CocoPlayer() {
    */
   const playListSize = playList.length;
   const thisIndex = nowPlaying.playIndex;
+  const handleClickNext = (isNext: boolean) => {
+    setIsPlay(false);
+    handleNewAudioSetting();
+    audio.pause();
+    if(isNext) {
+      playNextMusic();
+    } else {
+      playPrevMusic();
+    }
+  };
   const playNextMusic = () => {
+    handleClickPause();
     if(playListSize > 1) {
       let nextIndex = thisIndex + 1;
       if(nextIndex === playListSize) {
@@ -85,7 +95,7 @@ function CocoPlayer() {
           Number(track.playIndex) === nextIndex)[0];
         return newTrack;
       });
-    } 
+    }
     handleClickPlay();
   };
   /**
@@ -102,7 +112,7 @@ function CocoPlayer() {
           Number(track.playIndex) === prevIndex)[0];
         return newTrack;
       });
-    } 
+    }
     handleClickPlay();
   };
 
@@ -139,7 +149,8 @@ function CocoPlayer() {
   };
   const handleClickPlay = () => {
     if(isNewMusic) {
-      setIsNewMusic(false);
+      isNewMusic = false;
+      console.log(3, isNewMusic);
       try {
         // 음악 불러오기 실패
         audio.addEventListener('error', handleLoadedData);
@@ -205,20 +216,20 @@ function CocoPlayer() {
       {/* [2.2 플레이어 컨트롤러]---------- */}
       <ControllerCover className="col-auto align-self-center">
         {/* 이전 곡 */}
-        <button className="btn mobile-hidden">
+        <button onClick={() => handleClickNext(false)} className="btn mobile-hidden">
           <i className="fa-solid fa-backward-step"/>
         </button>
         {/* 재생, 일시정지 */}
         {isPlay ? 
           <button onClick={handleClickPause} className="play btn">
-            <i className="fa-solid jelly fa-pause" />
+            <i className="fa-solid jelly fa-pause fa-fw" />
           </button> : 
           <button onClick={handleClickPlay} className="play btn">
-            <i className="fa-solid jelly fa-play" />
+            <i className="fa-solid jelly fa-play fa-fw" />
           </button>
         }
         {/* 다음 곡 */}
-        <button className="btn">
+        <button onClick={() => handleClickNext(true)} className="btn">
           <i className="fa-solid fa-forward-step"/>
         </button>
       </ControllerCover>
