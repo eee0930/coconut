@@ -7,6 +7,7 @@ import ErrorComponent from "./components/ErrorComponent";
 // routes
 import Base from "./layout/Base";
 import Auth from "./layout/Auth";
+import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Search from "./routes/Search";
 import NotFound from "./routes/NotFound";
@@ -26,6 +27,9 @@ const router = createHashRouter([
         element: <Base />,
         children: [
           {
+            path: "",
+            element: <Home />,
+          },{
             path: "search/:query",
             element: <Search />,
           },{
