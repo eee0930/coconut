@@ -41,16 +41,11 @@ function SideMenuForPC() {
                 </DropdownMenu>
               </div>
             </UserCover>
-          </UserSection> : <LoginCover className="row">
-            <div className="title col-6">
-              <Link to="/auth/login">log in</Link>
-            </div>
-            <div className="col-6">
-              <Link className="button" to="/auth/login">
-                <span className="button-back"></span>
-                <span className="button-front">sign up</span>
-              </Link>
-            </div>
+          </UserSection> : <LoginCover>
+            <Link className="button" to="/auth/login">
+              <span className="button-back"></span>
+              <span className="button-front">log in</span>
+            </Link>
           </LoginCover>}
           <SideMenus>
             <li className="active">

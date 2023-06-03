@@ -38,7 +38,7 @@ export const ProgressBar = styled.div`
   height: 100%;
   width: 0%;
   background-color: ${props => props.theme.main2.side};
-  transition: width 1s linear;
+  transition: width 0.5s linear;
 `; 
 
 export const ControllerSection = styled.div`

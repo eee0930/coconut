@@ -65,7 +65,8 @@ export const SideMenu = styled(BoxStyle)`
   z-index: 4;
 `;
 export const TitleCover = styled.div`
-  margin: 1.5rem 0;
+  margin-top: 1rem;
+  padding: 1rem 0;
   .title {
     font-size: 2.6rem;
     text-align: center;
@@ -141,11 +142,8 @@ export const DropdownMenu = styled.div`
 `;
 export const LoginCover = styled.div`
   text-align: center;
-  margin-bottom: 1.5rem;
-  div { 
-    align-self: center;
-    padding: 0 0.2rem;
-  }
+  align-self: center;
+  padding: 1rem 1.2rem;
   a {
     color: ${props => props.theme.main1.main1};
     font-size: 1.1rem;
