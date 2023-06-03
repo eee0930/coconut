@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import { SideMenuContainer, SideMenuCover, LogoImg, 
   AnimationBoxCover, AnimationBox, SideMenu, TitleCover, 
   UserSection, UserCover, Nickname, DropdownBtn, DropdownMenu, 
@@ -9,6 +9,11 @@ import { isLoggedInState } from "../atoms";
 
 function SideMenuForPC() {
   const isLoggedIn = useRecoilValue(isLoggedInState);
+  const homeMatch = useMatch("/");
+  const chartMatch = useMatch("/chart");
+  const tapeMatch = useMatch("/mixtape");
+  const archiveMatch = useMatch("/archive");
+  
   return <>
     <SideMenuContainer>
       <SideMenuCover>
@@ -48,7 +53,7 @@ function SideMenuForPC() {
             </Link>
           </LoginCover>}
           <SideMenus>
-            <li className="active">
+            <li className={`${homeMatch && "active"}`}>
               <span className="icon-cover">
                 <i className="fa-solid fa-house-chimney-window" />
               </span>
@@ -56,7 +61,7 @@ function SideMenuForPC() {
                 <Link to="/">home</Link>
               </span>
             </li>
-            <li>
+            <li className={`${chartMatch && "active"}`}>
               <span className="icon-cover">
                 <i className="fa-solid fa-trophy" />
               </span>
@@ -64,7 +69,7 @@ function SideMenuForPC() {
                 <Link to="/chart">chart</Link>
               </span>
             </li>
-            <li>
+            <li className={`${tapeMatch && "active"}`}>
               <span className="icon-cover">
                 <i className="fa-solid fa-record-vinyl" />
               </span>
@@ -72,7 +77,7 @@ function SideMenuForPC() {
                 <Link to="/mixtape">mix tape</Link>
               </span>
             </li>
-            {isLoggedIn && <li>
+            {isLoggedIn && <li className={`${archiveMatch && "active"}`}>
               <span className="icon-cover">
                 <i className="fa-solid fa-heart" />
               </span>

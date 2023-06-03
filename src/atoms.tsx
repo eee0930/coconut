@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
-import { music1 } from "./utils/data/defaultMusic";
+import { music1, music2, music3 } from "./utils/data/defaultMusic";
 
 interface IControllerSetting {
   loop: number;
@@ -61,6 +61,14 @@ export const playListState = atom<IPlayListElement[]>({
     track: music1, 
     playIndex: 0,
     listIndex: 0,
+  }, { 
+    track: music2,  
+    playIndex: 1,
+    listIndex: 1,
+  }, { 
+    track: music3,  
+    playIndex: 2,
+    listIndex: 2,
   }],
   effects_UNSTABLE: [persistAtom],
 });

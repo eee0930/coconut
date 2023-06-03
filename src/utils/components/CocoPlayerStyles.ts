@@ -38,7 +38,7 @@ export const ProgressBar = styled.div`
   height: 100%;
   width: 0%;
   background-color: ${props => props.theme.main2.side};
-  transition: width 0.5s linear;
+  transition: width 01s linear;
 `; 
 
 export const ControllerSection = styled.div`
@@ -87,7 +87,30 @@ export const SongInfo = styled.div`
 `;
 export const ControllerCover = styled.div`
   text-align: center;
-  
+  .loop-btn {
+    color: ${props=> props.theme.main2.main1};
+    font-size: 1.1em;
+  }
+  .loop-btn.active {
+    color: ${props=> props.theme.main1.main2};
+  }
+  button {
+    position: relative;
+  }
+  .btn-text {
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 15px;
+    padding: 2px;
+    border-radius: 50%;
+    background-color: ${props=> props.theme.main1.main2};
+    color: ${props=> props.theme.main2.main1};
+    top: 2px;
+    right: 2px;
+    font-size: 11px;
+    font-width: 600;
+  }
   @media (min-width: 768px) {
     text-align: center;
     .btn {margin: 0 5px;}
