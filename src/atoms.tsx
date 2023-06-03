@@ -20,10 +20,13 @@ export interface ITrackInfo {
   rank?: number;
 };
 
-export interface IPlayListElement {
-  playIndex: number;
-  listIndex: number;
+interface INowPlaying {
+  index: number;
   track: ITrackInfo;
+}
+
+export interface IPlayListElement {
+  [key: number]: ITrackInfo;
 }
 
 const { persistAtom } = recoilPersist({
@@ -43,12 +46,11 @@ export const isLoggedInState = atom({
 /**
  * [현재 플레이]되고 있는 노래 정보
  */
-export const nowPlayingState = atom<IPlayListElement>({
+export const nowPlayingState = atom<INowPlaying>({
   key: "nowPlaying",
-  default: { 
-    track: music1, 
-    playIndex: 0,
-    listIndex: 0,
+  default: {
+    index: 1,
+    track: music1,
   },
   effects_UNSTABLE: [persistAtom],
 });
@@ -56,21 +58,13 @@ export const nowPlayingState = atom<IPlayListElement>({
 /**
  * [플레이 리스트]
  */
-export const playListState = atom<IPlayListElement[]>({
+export const playListState = atom<IPlayListElement>({
   key: "playList",
-  default: [{ 
-    track: music1, 
-    playIndex: 0,
-    listIndex: 0,
-  }, { 
-    track: music2,  
-    playIndex: 1,
-    listIndex: 1,
-  }, { 
-    track: music3,  
-    playIndex: 2,
-    listIndex: 2,
-  }],
+  default: {
+    1: music1,
+    2: music2,
+    3: music3,
+  },
   effects_UNSTABLE: [persistAtom],
 });
 

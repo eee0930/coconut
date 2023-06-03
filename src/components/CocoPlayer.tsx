@@ -24,33 +24,35 @@ const designTime = (time: number) => {
 
 function CocoPlayer() {
   const playList = useRecoilValue(playListState);
-  const [nowPlaying, setNowPlaying] = useRecoilState(nowPlayingState);
-  const [controllerSetting, setControllerSetting] = useRecoilState(controllerSettingState);
+  const [savedNowPlaying, setSavedNowPlaying] = useRecoilState(nowPlayingState);
+  const [savedController, setSavedController] = useRecoilState(controllerSettingState);
+  const [nowPlaying, setNowPlaying] = useState(savedNowPlaying);
+  const [controller, setController] = useState(savedController);
   const [isLoading, setIsLoading] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [isNewMusic, setIsNewMusic] = useState(true);
-  // const [cocoAudio, setCocoAudio] = useState(new Audio(nowPlaying.track.preview));
-  // const [progressSize, setProgressSize] = useState(100 / Math.round(cocoAudio.duration));
-  const [cocoAudio, setCocoAudio] = useState(new Audio("")) as any;
-  // const [prevAudio, setPrevAudio] = useState(new Audio(""));
-  // const [nextAudio, setNextAudio] = useState(new Audio(""));
+  const [cocoAudio, setCocoAudio] = useState(new Audio(""));
   const [progressSize, setProgressSize] = useState(1);
   const [progress, setProgress] = useState(0);
-  // const [durationTime, setDurationTime] = useState(Math.round(cocoAudio.duration));
   const [durationTime, setDurationTime] = useState(0);
   const [playTime, setPlayTime] = useState(0);
 
   useEffect(() => {
     cocoAudioSetting();
-    // setIsNewMusic(true);
+    setIsNewMusic(true);
+    setSavedNowPlaying(nowPlaying);
+    setSavedController(controller);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nowPlaying, controllerSetting]);
+  }, [nowPlaying, controller]);
+
+  // useEffect(() => {
+  //   setSavedController(controller);
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [controller]);
 
   useEffect(() => {
     let progressTimer: any;
     if(isPlay) {
-      console.log(progressSize);
-      console.log(cocoAudio.currentTime);
       progressTimer = setInterval(adjustProgress, 1000);
       return () => clearInterval(progressTimer);
     } else {
@@ -72,53 +74,51 @@ function CocoPlayer() {
   const stopProgress = () => {
     setProgress(0);
     setPlayTime(0);
+    cocoAudio.currentTime = 0;
   };
 
-  const handleNewAudioSetting = () => {
+  const newAudioSetting = () => {
     setDurationTime(Math.round(cocoAudio.duration));
     setProgressSize(100 / Math.round(cocoAudio.duration));
   };
-
 
   /**
    * next music play
    */
   const handleClickNext = (isNext: boolean) => {
-    const playListSize = playList.length;
-    const thisIndex = nowPlaying.playIndex;
-    handleClickPause();
-    setCocoAudio(null);
+    const playListSize = Object.keys(playList).length;
+    const thisIndex = nowPlaying.index;
     if(isNext) {
       playNextMusic(playListSize, thisIndex);
     } else {
       playPrevMusic(playListSize, thisIndex);
     }
   };
-  const getNewTrack = (index: number) => {
-    return playList.filter((track) => track.playIndex === index)[0];
+  
+  const getNexPlaying = (index: number) => {
+    const track = playList[index];
+    return { index, track };
   };
+
   const playNextMusic = (playListSize: number, thisIndex: number) => {
     if(playListSize > 1) {
       let nextIndex = thisIndex + 1;
-      if(nextIndex === playListSize) {
-        nextIndex = 0;
-      }
+      if(nextIndex === playListSize) nextIndex = 0;
       setIsNewMusic(true);
-      setNowPlaying(() => getNewTrack(nextIndex));
+      setNowPlaying(getNexPlaying(nextIndex));
     }
     handleClickPlay();
   };
+
   /**
    * prev music play
    */
   const playPrevMusic = (playListSize: number, thisIndex: number) => {
     if(playListSize > 1) {
       let prevIndex = thisIndex - 1;
-      if(prevIndex < 0) {
-        prevIndex = playListSize - 1;
-      }
+      if(prevIndex < 0) prevIndex = playListSize - 1;
       setIsNewMusic(true);
-      setNowPlaying(() => getNewTrack(prevIndex));
+      setNowPlaying(getNexPlaying(prevIndex));
     }
     handleClickPlay();
   };
@@ -132,13 +132,13 @@ function CocoPlayer() {
     setIsLoading(true);
     audioloadTimer = setTimeout(() => setIsLoading(false), 300);
   };
-  // const handleEnded = () => {
-  //   let timeout: any;
-  //   clearTimeout(timeout);
-  //   timeout = setTimeout(handleNextPlay, 500);
-  // };
   const handleEnded = () => {
-    const { loop } = controllerSetting;
+    let timeout: any;
+    clearTimeout(timeout);
+    timeout = setTimeout(handleNextPlay, 500);
+  };
+  const handleNextPlay = () => {
+    const { loop } = controller;
     stopProgress();
     if(loop === 1) { // 정지
       console.log("반복 안 함")
@@ -154,13 +154,11 @@ function CocoPlayer() {
   };
   const handleCanPlayThrough = () => {
     setIsPlay(true);
-    // cocoAudio.currentTime = cocoAudio.duration - 10;
     cocoAudio.play();
   };
   const handleClickPlay = () => {
     if(isNewMusic) {
-      cocoAudioSetting();
-      handleNewAudioSetting();
+      newAudioSetting();
       setIsNewMusic(false);
       try {
         // 음악 불러오기 실패
@@ -191,13 +189,13 @@ function CocoPlayer() {
    * @param loopN 
    */
   const handleClickLoop = (loopN: number) => {
-    setControllerSetting((prev) => {
+    setController((prev) => {
      return {...prev, loop: loopN};
     });
   };
 
   const handleToggleRandom = () => {
-    setControllerSetting((prev) => {
+    setController((prev) => {
       return {...prev, isRandom: !prev.isRandom};
     });
   }
@@ -242,10 +240,10 @@ function CocoPlayer() {
       {/* [2.2 플레이어 컨트롤러]---------- */}
       <ControllerCover className="col-auto align-self-center">
         {/* 반복재생 */}
-        {controllerSetting.loop === 1 ? 
+        {controller.loop === 1 ? 
         <button onClick={() => handleClickLoop(2)} className="btn mobile-hidden loop-btn">
           <i className="fa-solid fa-rotate"/>
-        </button> : controllerSetting.loop === 2 ? 
+        </button> : controller.loop === 2 ? 
         <button onClick={() => handleClickLoop(3)} className="btn mobile-hidden loop-btn active">
           <i className="fa-solid fa-rotate"/>
           <span className="btn-text">all</span>
@@ -273,7 +271,7 @@ function CocoPlayer() {
         </button>
         {/* 랜덤재생 */}
         <button onClick={handleToggleRandom} 
-          className={`btn mobile-hidden loop-btn ${controllerSetting.isRandom && "active"}`}>
+          className={`btn mobile-hidden loop-btn ${controller.isRandom && "active"}`}>
           <i className="fa-solid fa-shuffle"/>
         </button>
       </ControllerCover>
