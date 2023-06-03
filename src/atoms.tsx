@@ -17,6 +17,7 @@ export interface ITrackInfo {
   alid: number;
   imageSm: string;
   imageLg: string;
+  rank?: number;
 };
 
 export interface IPlayListElement {
