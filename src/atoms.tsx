@@ -2,7 +2,7 @@ import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 import { music1, music2, music3 } from "./utils/data/defaultMusic";
 
-interface IControllerSetting {
+export interface IControllerSetting {
   loop: number;
   isRandom: boolean;
 };
@@ -20,7 +20,7 @@ export interface ITrackInfo {
   rank?: number;
 };
 
-interface INowPlaying {
+export interface INowPlaying {
   index: number;
   track: ITrackInfo;
 }
@@ -49,10 +49,10 @@ export const isLoggedInState = atom({
 export const nowPlayingState = atom<INowPlaying>({
   key: "nowPlaying",
   default: {
-    index: 1,
+    index: 0,
     track: music1,
   },
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
 });
 
 /**
@@ -61,11 +61,11 @@ export const nowPlayingState = atom<INowPlaying>({
 export const playListState = atom<IPlayListElement>({
   key: "playList",
   default: {
-    1: music1,
-    2: music2,
-    3: music3,
+    0: music1,
+    1: music2,
+    2: music3,
   },
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
 });
 
 /**
@@ -78,7 +78,7 @@ export const controllerSettingState = atom<IControllerSetting>({
     loop: 1,
     isRandom: false,
   },
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
 });
 
 
