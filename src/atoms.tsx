@@ -15,6 +15,7 @@ export interface ITrackInfo {
   arid: number;
   artist: string;
   alid: number;
+  album?: string;
   imageSm: string;
   imageLg: string;
   rank?: number;
