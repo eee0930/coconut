@@ -1,32 +1,39 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
-import Albums from "./mixins/Albums";
-import { ITopTracks, fetchTopTracks } from "../apis/deezerMusicApi";
+import { IMixtape, ITapeDatas, fetchTapeDatas } from "../apis/deezerMusicApi";
 import { Loader } from "../utils/globalStyles";
+import Mixtapes from "./mixins/Mixtapes";
+import { getNewMixtapeList } from "../services/AlbumServiceImpl";
 
 function ListNewMixTape() {
-  const { data: topTracks, isLoading } = useQuery<ITopTracks>(
-    "topTracks", () => fetchTopTracks()
+  const { data, isLoading } = useQuery<ITapeDatas>(
+    "tapeList", 
+    () => fetchTapeDatas(), 
+    { retry: 0 }
   );
+
+  let tapeList;
+  if(!isLoading) {
+    tapeList = getNewMixtapeList(data?.data as IMixtape[]);
+  }
   
   return <>
+    <h2 className="title">
+      <Link to="/mixtape">
+        <span>new mix tape</span>
+        <i className="fa-solid fa-caret-right fa-fw" />
+      </Link>
+    </h2>
     {isLoading ? 
       <Loader>
         <div><div></div><div></div></div>
-      </Loader>
-    : <>
-      <h2 className="title">
-        <Link to="/chart">
-          <span>new mix tape</span>
-          <i className="fa-solid fa-caret-right fa-fw" />
-        </Link>
-      </h2>
+      </Loader> : <>
       <div className="row">
-        {/* {topTracks?.data.slice(5).map(track => 
-          <Albums key={track.tid} />)} */}
+        {tapeList?.map(tape => 
+          <Mixtapes data={tape} key={tape._id} />
+        )}
       </div>
     </>}
   </>;
 }
-
 export default ListNewMixTape;

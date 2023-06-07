@@ -34,7 +34,7 @@ function Home() {
     </MobileLogoSection>
     {/* [1. mix tape]------------------------------------------------------- */}
     <MainContent>
-      {/* <ListNewMixTape /> */}
+      <ListNewMixTape />
     </MainContent>
     {/* [2. top 10]--------------------------------------------------------- */}
     <MainContent>
