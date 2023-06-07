@@ -1,23 +1,15 @@
-import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { Link } from "react-router-dom";
-import { useQuery } from "react-query";
-import { isLoggedInState, ITrackInfo } from "../atoms";
-// import { getTopTrackList } from "../services/MusicServiceImpl";
-import { fetchTopTracks } from "../apis/deezerMusicApi";
+import { isLoggedInState } from "../atoms";
+import CocoButton from "../components/CocoButton";
+import ListTopTrack from "../components/ListTopTrack";
+import ListNewMixTape from "../components/ListNewMixTape";
 import { MobileLogoSection, MemberCover, LogoutBtn, Nickname, MainContent } 
   from "../utils/screens/HomeStyles";
-import CocoButton from "../components/CocoButton";
-import Musics from "../components/mixins/Musics";
 
 function Home() {
   const isLoggedIn = useRecoilValue(isLoggedInState);
-  const { data, isLoading } = useQuery<ITrackInfo[]>(
-    "topTrackList", () => fetchTopTracks()
-  );
 
-  //const topTrackList = getTopTrackList(data as any) as ITrackInfo[];
-  
   return <>
     {/* mobile logo */}
     <MobileLogoSection>
@@ -42,34 +34,11 @@ function Home() {
     </MobileLogoSection>
     {/* [1. mix tape]------------------------------------------------------- */}
     <MainContent>
-      <h2 className="title">
-        <Link to="/mixtape">
-          <span>new mix tape</span>
-          <i className="fa-solid fa-caret-right fa-fw" />
-        </Link>
-      </h2>
-      <div className="row">
-
-      </div>
+      {/* <ListNewMixTape /> */}
     </MainContent>
     {/* [2. top 10]--------------------------------------------------------- */}
     <MainContent>
-      <h2 className="title">
-        <Link to="/chart">
-          <span>today's top 10</span>
-          <i className="fa-solid fa-caret-right fa-fw" />
-        </Link>
-      </h2>
-      <div className="row">
-        <div className="col-12 col-md-6">
-          {data && data?.slice(0, 5).map(track => 
-            <Musics track={track} check={false} />)}
-        </div>
-        <div className="col-12 col-md-6">
-          {data && data?.slice(5).map(track => 
-            <Musics track={track} check={false} />)}
-        </div>
-      </div>
+      <ListTopTrack />
     </MainContent>
   </>;
 }

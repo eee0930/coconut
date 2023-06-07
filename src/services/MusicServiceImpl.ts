@@ -1,7 +1,8 @@
 import { ITrackInfo } from "../atoms";
+import { IData } from "../apis/deezerMusicApi";
 
-export const getTopTrackList = (data: ITrackInfo[]) => {
-  const sortTopTrack = (track: any, index: number) => {
+export const getTopTrackList = (data: IData[]) => {
+  const topTracks = data.map((track: IData, index: number) => {
     return {
       tid: track.id,
       name: track.title_short,
@@ -14,9 +15,7 @@ export const getTopTrackList = (data: ITrackInfo[]) => {
       imageSm: track.album.cover_small,
       imageLg: track.album.cover_big,
       rank: index + 1,
-    };
-  };
-  const topTracks = data
-    .map((track: any, index: number) => sortTopTrack(track, index));
-  return topTracks;
+    } as ITrackInfo;
+  });
+  return topTracks as ITrackInfo[];
 }

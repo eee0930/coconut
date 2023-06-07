@@ -1,3 +1,5 @@
+import { ITrackInfo } from "../atoms";
+
 const API_ROOT = process.env.REACT_APP_RAPID_API_KEY;
 const API_HOST = process.env.REACT_APP_DEEZER_HOST;
 const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
@@ -5,6 +7,28 @@ const METHOD = "get";
 const HEADERS = {
   'X-RapidAPI-Key': API_KEY,
   'X-RapidAPI-Host': API_HOST
+}
+
+export interface IData {
+  id: number;
+  title_short: string;
+  duration: number;
+  preview: string;
+  artist: {
+    id: number;
+    name: string;
+  };
+  album: {
+    id: number;
+    title?: string;
+    cover_small: string;
+    cover_big: string;
+  };
+}
+
+export interface ITopTracks {
+  data: IData[];
+  total: number;
 }
 
 interface IOptions {
@@ -17,21 +41,21 @@ interface IOptions {
 
 const fetchResponseData = (url: string, options?: IOptions) => {
   try {
-    const response = fetch(url).then((response) => response.json());
+    const response = fetch(url).then(
+      (response) => response.json()
+    );
     return response;
   } catch (error: any) {
     console.error(error.message);
     throw error;
   }
-}
+};
 
 export const fetchTopTracks = () => {
-  const url = "https://api.deezer.com/chart/0/tracks";
-  const options = {
-    method: METHOD,
-  } as IOptions;
-  return fetchResponseData(url);
-}
+    return fetch("https://api.deezer.com/chart/0/tracks").then(
+      (response) => response.json()
+    );
+};
 
 export const fetchSearchResultsByQuery = (query: string) => {
   const url = `${API_ROOT}search?q=${query}`;
@@ -40,7 +64,7 @@ export const fetchSearchResultsByQuery = (query: string) => {
     headers: HEADERS
   } as IOptions;
   return fetchResponseData(url, options);
-}
+};
 
 export const fetchTrackById = (tid: number) => {
   const url = `${API_ROOT}track/%7Bid%7D?id=${tid}`;
@@ -49,7 +73,7 @@ export const fetchTrackById = (tid: number) => {
     headers: HEADERS
   } as IOptions;
   return fetchResponseData(url, options);
-}
+};
 
 export const fetchArtistById = (arid: number) => {
   const url = `${API_ROOT}artist/%7Bid%7D?id=${arid}`;
@@ -58,7 +82,7 @@ export const fetchArtistById = (arid: number) => {
     headers: HEADERS
   } as IOptions;
   return fetchResponseData(url, options);
-}
+};
 
 export const fetchAlbumById = (alid: number) => {
   const url = `${API_ROOT}album/%7Bid%7D?id=${alid}`;
@@ -67,4 +91,5 @@ export const fetchAlbumById = (alid: number) => {
     headers: HEADERS
   } as IOptions;
   return fetchResponseData(url, options);
-}
+};
+

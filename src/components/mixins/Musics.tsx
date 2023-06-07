@@ -22,8 +22,8 @@ function Musics({ track, check }: IMusics) {
       <AlbumImage className="col-auto align-self-center">
         <PlaylistAlbumImg src={`${process.env.PUBLIC_URL}/img/default_paper.png`} 
           style={{ backgroundImage: `url(${track.imageSm})` }}/>
-        <PlayBtn>
-          <i className="fa-solid fa-play" />
+        <PlayBtn className="play-btn">
+          <i className="fa-solid fa-play fa-fw" />
         </PlayBtn>
       </AlbumImage>
       {track?.rank && 
