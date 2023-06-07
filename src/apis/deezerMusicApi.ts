@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const API_ROOT = process.env.REACT_APP_RAPID_API_KEY;
 const API_HOST = process.env.REACT_APP_DEEZER_HOST;
 const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
@@ -11,69 +9,62 @@ const HEADERS = {
 
 interface IOptions {
   method: string;
-  url: string;
-  params?: any;
   headers?: {
     "X-RapidAPI-Key": string;
     "X-RapidAPI-Host": string;
   }
 };
 
-const fetchResponseData = async (options: IOptions) => {
+const fetchResponseData = (url: string, options?: IOptions) => {
   try {
-    const response = await axios.request(options);
-    const data = response.data;
-    return data;
+    const response = fetch(url).then((response) => response.json());
+    return response;
   } catch (error: any) {
     console.error(error.message);
     throw error;
   }
 }
 
-export const fetchTopTracks = async () => {
+export const fetchTopTracks = () => {
+  const url = "https://api.deezer.com/chart/0/tracks";
   const options = {
     method: METHOD,
-    url: "https://api.deezer.com/chart/0/tracks",
-  };
-  return await fetchResponseData(options);
+  } as IOptions;
+  return fetchResponseData(url);
 }
 
-export const fetchSearchResultsByQuery = async (query: string) => {
+export const fetchSearchResultsByQuery = (query: string) => {
+  const url = `${API_ROOT}search?q=${query}`;
   const options = {
     method: METHOD,
-    url: `${API_ROOT}search`,
-    params: { q: query },
     headers: HEADERS
   } as IOptions;
-  return await fetchResponseData(options);
+  return fetchResponseData(url, options);
 }
 
-export const fetchTrackById = async (tid: number) => {
+export const fetchTrackById = (tid: number) => {
+  const url = `${API_ROOT}track/%7Bid%7D?id=${tid}`;
   const options = {
     method: METHOD,
-    url: `${API_ROOT}track/%7Bid%7D`,
-    params: { id: tid },
     headers: HEADERS
   } as IOptions;
-  return await fetchResponseData(options);
+  return fetchResponseData(url, options);
 }
 
-export const fetchArtistById = async (arid: number) => {
+export const fetchArtistById = (arid: number) => {
+  const url = `${API_ROOT}artist/%7Bid%7D?id=${arid}`;
   const options = {
     method: METHOD,
-    url: `${API_ROOT}artist/%7Bid%7D`,
-    params: { id: arid },
     headers: HEADERS
   } as IOptions;
-  return await fetchResponseData(options);
+  return fetchResponseData(url, options);
 }
 
-export const fetchAlbumById = async (alid: number) => {
+export const fetchAlbumById = (alid: number) => {
+  const url = `${API_ROOT}album/%7Bid%7D?id=${alid}`;
   const options = {
     method: METHOD,
-    url: `${API_ROOT}album/%7Bid%7D`,
-    params: { id: alid },
     headers: HEADERS
   } as IOptions;
-  return await fetchResponseData(options);
+  return fetchResponseData(url, options);
 }

@@ -1,12 +1,23 @@
+import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { isLoggedInState } from "../atoms";
+import { Link } from "react-router-dom";
+import { useQuery } from "react-query";
+import { isLoggedInState, ITrackInfo } from "../atoms";
+// import { getTopTrackList } from "../services/MusicServiceImpl";
+import { fetchTopTracks } from "../apis/deezerMusicApi";
 import { MobileLogoSection, MemberCover, LogoutBtn, Nickname, MainContent } 
   from "../utils/screens/HomeStyles";
-import { Link } from "react-router-dom";
 import CocoButton from "../components/CocoButton";
+import Musics from "../components/mixins/Musics";
 
 function Home() {
   const isLoggedIn = useRecoilValue(isLoggedInState);
+  const { data, isLoading } = useQuery<ITrackInfo[]>(
+    "topTrackList", () => fetchTopTracks()
+  );
+
+  //const topTrackList = getTopTrackList(data as any) as ITrackInfo[];
+  
   return <>
     {/* mobile logo */}
     <MobileLogoSection>
@@ -51,7 +62,12 @@ function Home() {
       </h2>
       <div className="row">
         <div className="col-12 col-md-6">
-
+          {data && data?.slice(0, 5).map(track => 
+            <Musics track={track} check={false} />)}
+        </div>
+        <div className="col-12 col-md-6">
+          {data && data?.slice(5).map(track => 
+            <Musics track={track} check={false} />)}
         </div>
       </div>
     </MainContent>
