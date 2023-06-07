@@ -1,35 +1,34 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import Musics from "./mixins/Musics";
-import { ITopTracks, IData, fetchTopTracks } from "../apis/deezerMusicApi";
+import { ITopChart, Itrack, fetchTopTracks } from "../apis/deezerMusicApi";
 import { Loader } from "../utils/globalStyles";
 import { getTopTrackList } from "../services/MusicServiceImpl";
 import { ITrackInfo } from "../atoms";
 
-function ListNewMixTape() {
-  const { data, isLoading } = useQuery<ITopTracks>(
-    "topTracks", 
+function ListTopTrack() {
+  const { data, isLoading } = useQuery<ITopChart>(
+    "topChart", 
     () => fetchTopTracks(), 
     { retry: 0 }
   );
 
   let topTracks;
   if(!isLoading) {
-    topTracks = getTopTrackList(data?.data as IData[]) as ITrackInfo[];
+    topTracks = getTopTrackList(data?.tracks.data as Itrack[]) as ITrackInfo[];
   }
   
   return <>
+    <h2 className="title">
+      <Link to="/chart">
+        <span>today's top 10</span>
+        <i className="fa-solid fa-caret-right fa-fw" />
+      </Link>
+    </h2>
     {isLoading ? 
       <Loader>
         <div><div></div><div></div></div>
-      </Loader>
-    : <>
-      <h2 className="title">
-        <Link to="/chart">
-          <span>today's top 10</span>
-          <i className="fa-solid fa-caret-right fa-fw" />
-        </Link>
-      </h2>
+      </Loader> : <>
       <div className="row">
         <div className="col-12 col-md-6">
           {topTracks?.slice(0, 5).map(track => 
@@ -44,4 +43,4 @@ function ListNewMixTape() {
   </>;
 }
 
-export default ListNewMixTape;
+export default ListTopTrack;

@@ -1,8 +1,9 @@
 import { ITrackInfo } from "../atoms";
-import { IData } from "../apis/deezerMusicApi";
+import { Itrack } from "../apis/deezerMusicApi";
 
-export const getTopTrackList = (data: IData[]) => {
-  const topTracks = data.map((track: IData, index: number) => {
+export const getTopTrackList = (data: Itrack[]) => {
+  const topTracks = data.slice(0, 10)
+    .map((track: Itrack, index: number) => {
     return {
       tid: track.id,
       name: track.title_short,
