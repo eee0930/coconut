@@ -1,5 +1,4 @@
-import { IMixtape } from "../apis/deezerMusicApi";
-
+import { IMixtape } from "../apis/localApi";
 
 export const getNewMixtapeList = (data: IMixtape[]) => {
   const dataSize = data.length;
