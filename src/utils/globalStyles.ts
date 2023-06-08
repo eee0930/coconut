@@ -583,12 +583,11 @@ export const CocoStyles = createGlobalStyle`
   left: -8px;
   top: -1px;
 }
-
 input.coco-form {
   width: 100%;
   max-width: 250px;
   height: 40px;
-  border: solid 2px $blackd;
+  border: solid 2px ${props => props.theme.black.lighter};
   border-radius: 8px;
   padding: 2px 7px;
 }
@@ -672,7 +671,6 @@ input.option-input[type="checkbox"]:checked::after {
 .option-input.checkbox::after {border-radius: 2px;}
 .option-input.radio {border-radius: 50%;}
 .option-input.radio::after {border-radius: 50%;}
-
 @media (max-width: 767.5px) {
 	.option-input {
 		height: 20px;
@@ -704,7 +702,7 @@ input.option-input[type="checkbox"]:checked::after {
 		width: 22px;
 		line-height: 22px;
 	}
-	.option-input:checked,
+  .option-input:checked,
 	input.option-input[type="radio"]:checked,
 	input.option-input[type="checkbox"]:checked {
 		-webkit-animation: jelly .5s ease;
@@ -820,6 +818,21 @@ export const Loader = styled.div`
       width: 36px;
       height: 36px;
       opacity: 0;
+    }
+  }
+`;
+export const TitleSection = styled.div`
+  margin: 3rem 1rem;
+  h1 {
+    font-size: 2rem;
+    color: ${props => props.theme.main1.main2};
+    text-transform: uppercase;
+    i {
+      width: 1.5em;
+      font-size: 0.6em;
+      position: relative;
+      top: -5px;
+      right: 0;
     }
   }
 `;

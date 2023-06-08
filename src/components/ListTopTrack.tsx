@@ -32,11 +32,11 @@ function ListTopTrack() {
       <div className="row">
         <div className="col-12 col-md-6">
           {topTracks?.slice(0, 5).map(track => 
-            <Musics track={track} check={false} key={track.tid} />)}
+            <Musics track={track} check={false} allChecked={false} key={track.tid} />)}
         </div>
         <div className="col-12 col-md-6">
           {topTracks?.slice(5).map(track => 
-            <Musics track={track} check={false} key={track.tid} />)}
+            <Musics track={track} check={false} allChecked={false} key={track.tid} />)}
         </div>
       </div>
     </>}

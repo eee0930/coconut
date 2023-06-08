@@ -76,3 +76,11 @@ background-color: ${props => props.theme.main1.main1};
 border: none;
 padding: 0;
 `;
+export const LikeContainer = styled.div`
+width: 30px;
+text-align: center;
+> button {
+  color: rgb(205, 210, 215);
+  font-size: 1.2rem;
+}
+`;

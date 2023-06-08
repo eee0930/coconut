@@ -1,28 +1,61 @@
-const API_ROOT = process.env.REACT_APP_RAPID_API_KEY;
-const API_HOST = process.env.REACT_APP_DEEZER_HOST;
-const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
-const METHOD = "get";
-const HEADERS = {
-  'X-RapidAPI-Key': API_KEY,
-  'X-RapidAPI-Host': API_HOST
+const API_ROOT = "https://api.deezer.com/";
+
+interface IContributor {
+  id: number;
+  name: string;
+  picture_small: string;
+  picture_big: string;
+  type: string;
+}
+interface IGenreData {
+  id: number;
+  name: string;
 }
 
+// [for artist]-----------------------------------------------------------------
 export interface IArtist {
   id: number;
   name: string;
-  picture_small?: string;
   picture_big?: string;
-  tracklist?: string;
+}
+export interface IArtistInfo {
+  id: number;
+  name: string;
+  picture_small: string;
+  picture_big: string;
+  tracklist: string;
+  type: string;
+  nb_album: number;
 }
 
+// [for album]------------------------------------------------------------------
 export interface IAlbum {
   id: number;
   title: string;
   cover_small: string;
   cover_big: string;
   tracklist?: string;
+  artist?: IArtist;
+}
+export interface IAlbumInfo {
+  id: number;
+  title: string;
+  cover_small: string;
+  cover_big: string;
+  release_date: string;
+  nb_tracks: number;
+  duration: number;
+  genres: {
+    data: IGenreData[];
+  };
+  contributors: IContributor[];
+  artist: IArtist;
+  tracks: {
+    data: Itrack[];
+  };
 }
 
+// [for playlist]---------------------------------------------------------------
 export interface IPlayList {
   id: number;
   title: string;
@@ -33,6 +66,7 @@ export interface IPlayList {
   creation_date: string;
 }
 
+// [for track]------------------------------------------------------------------
 export interface Itrack {
   id: number;
   title_short: string;
@@ -41,7 +75,18 @@ export interface Itrack {
   artist: IArtist;
   album: IAlbum;
 }
+export interface ITrackInfo {
+  id: number;
+  title_short: string;
+  duration: number;
+  preview: string;
+  release_date: string;
+  artist: IArtist;
+  album: IAlbum;
+  contributors: IContributor[];
+}
 
+// [for top rank]---------------------------------------------------------------
 export interface ITopTracks {
   data: Itrack[];
   total: number;
@@ -58,7 +103,6 @@ export interface ITopPlayLists {
   data: IPlayList[];
   total: number;
 }
-
 export interface ITopChart {
   tracks: ITopTracks;
   albums: ITopAlbums;
@@ -66,21 +110,10 @@ export interface ITopChart {
   playlists: ITopPlayLists;
 }
 
-interface IOptions {
-  method: string;
-  headers?: {
-    "X-RapidAPI-Key": string;
-    "X-RapidAPI-Host": string;
-  }
-};
 
-const fetchResponseData = (url: string, options?: IOptions) => {
+const fetchResponseData = (url: string) => {
   try {
-    if(options) {
-      return fetch(url).then(response => response.json());
-    } else {
-      return fetch(url, options).then(response => response.json());
-    }
+    return fetch(url).then(response => response.json());
   } catch (error: any) {
     console.error(error.message);
     throw error;
@@ -91,50 +124,50 @@ export const fetchTrackListByApiUrl = (url: string) => {
   return fetchResponseData(url);
 };
 
-
 export const fetchTopTracks = () => {
-  const url = "https://api.deezer.com/chart/tracks";
+  const url = `${API_ROOT}chart/tracks`;
   return fetchResponseData(url);
 };
 
-export const fetchTopTracksByArid = (arid: number) => {
-  const url = `https://api.deezer.com/artist/${arid}/top?limit=50`;
+export const fetchTrackListByArtistId = (arid: number) => {
+  const url = `${API_ROOT}artist/${arid}/top?limit=50`;
+  return fetchResponseData(url);
+};
+export const fetchTrackListByAlbumId = (alid: number) => {
+  const url = `${API_ROOT}album/${alid}/tracks`;
+  return fetchResponseData(url);
+};
+export const fetchTrackListByPlaylistId = (pid: number) => {
+  const url = `${API_ROOT}playlist/${pid}/tracks`;
+  return fetchResponseData(url);
+};
+
+export const fetchTrackInfoById = (tid: number) => {
+  const url = `${API_ROOT}track/${tid}`;
+  return fetchResponseData(url);
+};
+export const fetchArtistInfoById = (arid: number) => {
+  const url = `${API_ROOT}artist/${arid}`;
+  return fetchResponseData(url);
+};
+export const fetchAlbumInfoById = (alid: number) => {
+  const url = `${API_ROOT}album/${alid}`;
   return fetchResponseData(url);
 };
 
 export const fetchSearchResultsByQuery = (query: string) => {
   const url = `${API_ROOT}search?q=${query}`;
-  const options = {
-    method: METHOD,
-    headers: HEADERS
-  } as IOptions;
-  return fetchResponseData(url, options);
+  return fetchResponseData(url);
 };
-
-export const fetchTrackById = (tid: number) => {
-  const url = `${API_ROOT}track/%7Bid%7D?id=${tid}`;
-  const options = {
-    method: METHOD,
-    headers: HEADERS
-  } as IOptions;
-  return fetchResponseData(url, options);
+export const fetchSearchTracksByQuery = (query: string) => {
+  const url = `${API_ROOT}search/track?q=${query}`;
+  return fetchResponseData(url);
 };
-
-export const fetchArtistById = (arid: number) => {
-  const url = `${API_ROOT}artist/%7Bid%7D?id=${arid}`;
-  const options = {
-    method: METHOD,
-    headers: HEADERS
-  } as IOptions;
-  return fetchResponseData(url, options);
+export const fetchSearchArtistsByQuery = (query: string) => {
+  const url = `${API_ROOT}search/artist?q=${query}`;
+  return fetchResponseData(url);
 };
-
-export const fetchAlbumById = (alid: number) => {
-  const url = `${API_ROOT}album/%7Bid%7D?id=${alid}`;
-  const options = {
-    method: METHOD,
-    headers: HEADERS
-  } as IOptions;
-  return fetchResponseData(url, options);
+export const fetchSearchAlbumsByQuery = (query: string) => {
+  const url = `${API_ROOT}search/album?q=${query}`;
+  return fetchResponseData(url);
 };
-

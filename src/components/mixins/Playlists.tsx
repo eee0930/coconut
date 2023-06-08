@@ -2,28 +2,28 @@ import { Link } from "react-router-dom";
 import { AlbumContainer, ImageSection, Image, 
   TitleSection, AuthorSection } 
   from "../../utils/components/AlbumElementStyles";
-import { IAlbum } from "../../apis/deezerMusicApi";
+import { IPlayList } from "../../apis/deezerMusicApi";
 
-interface IAlbums {
-  album: IAlbum;
+interface IPlaylists {
+  playlist: IPlayList;
 }
-function Albums({ album }: IAlbums) {
+function Playlists({ playlist }: IPlaylists) {
   return <>
     <AlbumContainer>
       <ImageSection>
-        <Link to={`/album/${album.id}`}>
+        <Link to={`/album/${playlist.id}`}>
           <Image src={`${process.env.PUBLIC_URL}/img/default_paper.png`}
-            style={{ backgroundImage: `url(${album.cover_big})` }}/>
+            style={{ backgroundImage: `url(${playlist.picture_big})` }}/>
         </Link>
       </ImageSection>
       <TitleSection>
-        {album.title}
+        {playlist.title}
       </TitleSection>
       <AuthorSection>
-        {album.artist?.name}
+        {playlist.creation_date.split(" ")[0]}
       </AuthorSection>
     </AlbumContainer>
   </>;
 };
 
-export default Albums;
+export default Playlists;

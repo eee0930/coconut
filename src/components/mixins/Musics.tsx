@@ -1,22 +1,29 @@
 import { Link } from "react-router-dom";
 import { ITrackInfo } from "../../atoms";
 import { TrackEleSection, TrackEleCover, AlbumImage, PlayBtn, 
-  CheckList, TrackRank, AlbumInfo, NameCover, ArtistCover, PlaylistAlbumImg } 
+  CheckList, TrackRank, AlbumInfo, NameCover, ArtistCover, PlaylistAlbumImg, LikeContainer } 
   from "../../utils/components/MusicElementsStyles";
+import { useState } from "react";
 
 interface IMusics {
   track: ITrackInfo;
   check: boolean;
+  allChecked: boolean;
 };
 
-function Musics({ track, check }: IMusics) {
+function Musics({ track, check, allChecked }: IMusics) {
+  const [isChecked, setIsChecked] = useState(allChecked);
+    
+  const handleClickCheck = () => setIsChecked(prev => !prev);
+  
   return <>
   <TrackEleSection>
     <TrackEleCover className="row">
       {check && 
         <CheckList className="col-auto align-self-center">
-          <input type="checkbox" value={track.tid} name="trackList" 
-            className="option-input checkbox" />
+          <input type="checkbox" value={track.tid} 
+            className="option-input checkbox" onChange={handleClickCheck}
+            checked={isChecked} />
         </CheckList>
       }
       <AlbumImage className="col-auto align-self-center">
@@ -43,6 +50,11 @@ function Musics({ track, check }: IMusics) {
           </Link>
         </ArtistCover>
       </AlbumInfo>
+      <LikeContainer className="col-auto align-self-center">
+        <button className="likeBtn btn">
+          <i className="fa-regular fa-heart" />
+        </button>
+      </LikeContainer>
     </TrackEleCover>
   </TrackEleSection>
   </>;

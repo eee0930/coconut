@@ -6,11 +6,16 @@ import ListTopTrack from "../components/ListTopTrack";
 import ListNewMixTape from "../components/ListNewMixTape";
 import { MobileLogoSection, MemberCover, LogoutBtn, Nickname, MainContent } 
   from "../utils/screens/HomeStyles";
+import { Helmet } from "react-helmet";
+import { useEffect } from "react";
 
 function Home() {
   const isLoggedIn = useRecoilValue(isLoggedInState);
-
+  useEffect(() => window.scrollTo(0, 0), []);
   return <>
+    <Helmet>
+      <title>Coconut Music</title>
+    </Helmet>
     {/* mobile logo */}
     <MobileLogoSection>
       <div className="row">
