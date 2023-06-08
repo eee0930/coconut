@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
-import { IMixtape, ITapeDatas, fetchTapeDatas } from "../apis/deezerMusicApi";
-import { Loader } from "../utils/globalStyles";
 import Mixtapes from "./mixins/Mixtapes";
 import { getNewMixtapeList } from "../services/AlbumServiceImpl";
+import { IMixtape, ITapeDatas, fetchTapeDatas } from "../apis/localApi";
+import { Loader } from "../utils/globalStyles";
 
 function ListNewMixTape() {
   const { data, isLoading } = useQuery<ITapeDatas>(

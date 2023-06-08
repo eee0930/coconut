@@ -1,5 +1,3 @@
-import { ITrackInfo } from "../atoms";
-
 const API_ROOT = process.env.REACT_APP_RAPID_API_KEY;
 const API_HOST = process.env.REACT_APP_DEEZER_HOST;
 const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
@@ -14,6 +12,7 @@ export interface IArtist {
   name: string;
   picture_small?: string;
   picture_big?: string;
+  tracklist?: string;
 }
 
 export interface IAlbum {
@@ -67,18 +66,6 @@ export interface ITopChart {
   playlists: ITopPlayLists;
 }
 
-export interface IMixtape {
-  "_id": string;
-  tapeImage: string;
-  title: string;
-  author: string;
-  songList: ITrackInfo[];
-}
-
-export interface ITapeDatas {
-  data: IMixtape[];
-}
-
 interface IOptions {
   method: string;
   headers?: {
@@ -104,10 +91,6 @@ export const fetchTrackListByApiUrl = (url: string) => {
   return fetchResponseData(url);
 };
 
-export const fetchTapeDatas = () => {
-  const url = `${process.env.PUBLIC_URL}/data/tapeDatas.json`;
-  return fetchResponseData(url);
-}
 
 export const fetchTopTracks = () => {
   const url = "https://api.deezer.com/chart/tracks";

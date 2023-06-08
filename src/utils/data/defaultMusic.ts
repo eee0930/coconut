@@ -22,7 +22,6 @@ export const music2 = {
   imageLg: "https://e-cdns-images.dzcdn.net/images/cover/107c2b43f10c249077c1f7618563bb63/500x500-000000-80-0-0.jpg",
 };
 
-
 export const music3 = {
   tid: 728157542,
   name: "빨간 맛",
