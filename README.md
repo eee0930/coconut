@@ -13,17 +13,11 @@
 
 #### `global` routes
 - / -> Home
-- /join -> Join
-- /search -> Search
-
-#### `member` rooutes
-- /member/logout -> Log Out
-- /member/delete -> Delete My Profile
-- /member/archive -> Play List Archive
+- /auth/login -> Login
+- /search/:query -> Search Results
 
 #### `music` routes
 - /music/:id -> View Music info
-- /music/:id/comments -> Comments on a Music
 
 #### `artist` routes
 - /artist/:id -> View Artist Info
@@ -32,7 +26,11 @@
 - /album/:id -> View Album Info and Song list
 
 #### `mixtape` routes
+- /mixtape -> List Mixtapes
 - /mixtape/:id -> View Mixtape Info and Song List
+
+#### `chart` routes
+- /chart -> List Tracks, Artists, Albums and Playlists Chart
 
 
 

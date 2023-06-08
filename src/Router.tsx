@@ -5,12 +5,12 @@ import { createHashRouter } from "react-router-dom";
 import ErrorComponent from "./components/ErrorComponent";
 
 // routes
+import NotFound from "./routes/NotFound";
 import Base from "./layout/Base";
 import Auth from "./layout/Auth";
 import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Search from "./routes/Search";
-import NotFound from "./routes/NotFound";
 import ListMixTape from "./routes/ListMixTape";
 import ViewAlbum from "./routes/ViewAlbum";
 import ViewMusic from "./routes/ViewMusic";
