@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { IMixtape } from "../../apis/deezerMusicApi";
+import { IMixtape } from "../../apis/localApi";
 import { AlbumContainer, ImageSection, Image, 
   TitleSection, AuthorSection } 
   from "../../utils/components/AlbumElementStyles";
