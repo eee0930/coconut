@@ -1,40 +1,44 @@
+import { useEffect } from "react";
 import { useQuery } from "react-query";
-import { IAlbum, IArtist, IPlayList, ITopChart, Itrack, fetchTopTracks } from "../apis/deezerMusicApi";
-import { getTopTrackList } from "../services/MusicServiceImpl";
+import { Helmet } from "react-helmet";
 import { ITrackInfo } from "../atoms";
+
+// apis
+import { IAlbum, IArtist, IPlayList, ITopChart, ITrack, fetchTopTracks } 
+  from "../apis/deezerMusicApi";
+
+//styles
 import { MainContent } from "../utils/screens/HomeStyles";
 import { Loader, TitleSection } from "../utils/globalStyles";
-import Musics from "../components/mixins/Musics";
-import { CheckList, TrackEleCover } from "../utils/components/MusicElementsStyles";
-import { ChartInfo, TrackEleSection } from "../utils/screens/ListChartStyles";
-import { useEffect, useState } from "react";
+
+// services
 import { getTopAlbumList, getTopPlaylistList } from "../services/AlbumServiceImpl";
-import Albums from "../components/mixins/Albums";
-import Artists from "../components/mixins/Artists";
 import { getTopArtistList } from "../services/ArtistServiceImpl";
+import { getTopTrackList } from "../services/MusicServiceImpl";
+
+// components
 import Playlists from "../components/mixins/Playlists";
-import { Helmet } from "react-helmet";
+import Artists from "../components/mixins/Artists";
+import Albums from "../components/mixins/Albums";
+import Musics from "../components/mixins/Musics";
 
 function Chart() {
   const { data, isLoading } = useQuery<ITopChart>(
     "topChart", 
-    () => fetchTopTracks(), 
+    fetchTopTracks, 
     { retry: 0 }
   );
-  const [trackChecked, setTrackChecked] = useState(false);
   useEffect(() => window.scrollTo(0, 0), []);
 
   let topTracks, topAlbums, topArtists, topPlaylists;
   
   if(!isLoading) {
-    topTracks = getTopTrackList(data?.tracks.data as Itrack[]) as ITrackInfo[];
+    topTracks = getTopTrackList(data?.tracks.data as ITrack[]) as ITrackInfo[];
     topAlbums = getTopAlbumList(data?.albums.data as IAlbum[]);
     topArtists = getTopArtistList(data?.artists.data as IArtist[]);
     topPlaylists = getTopPlaylistList(data?.playlists.data as IPlayList[]);
   }
 
-  const handleAllTrackChecked = () => setTrackChecked(prev => !prev);
-  
   return <>
   <Helmet>
     <title>Chart | Coconut</title>
@@ -51,7 +55,7 @@ function Chart() {
     </Loader> : <>
 
     {/* [1. playlist]------------------------------------------------------- */}
-    <MainContent>
+    <MainContent id="playlist">
       <h2 className="title">
         <span>top playlist</span>
       </h2>
@@ -64,7 +68,7 @@ function Chart() {
     </MainContent>
 
     {/* [2. artist]--------------------------------------------------------- */}
-    <MainContent>
+    <MainContent id="artist">
       <h2 className="title">
         <span>top artists</span>
       </h2>
@@ -77,7 +81,7 @@ function Chart() {
     </MainContent>
 
     {/* [3. album]---------------------------------------------------------- */}
-    <MainContent>
+    <MainContent id="album">
       <h2 className="title">
         <span>top albums</span>
       </h2>
@@ -90,24 +94,13 @@ function Chart() {
     </MainContent>
 
     {/* [4. track]---------------------------------------------------------- */}
-    <MainContent>
+    <MainContent id="track">
       <h2 className="title">
         <span>top tracks</span>
       </h2>
-      <TrackEleSection>
-        <TrackEleCover className="row">
-          <CheckList className="col-auto align-self-center">
-            <input checked={trackChecked} onChange={handleAllTrackChecked} 
-              type="checkbox" className="option-input checkbox" />
-          </CheckList>
-          <ChartInfo className="col align-self-center">
-            <span>Total 10</span>
-          </ChartInfo>
-        </TrackEleCover>
-      </TrackEleSection>
       <div>
         {topTracks?.map(track => 
-          <Musics track={track} check={true} allChecked={trackChecked} 
+          <Musics track={track} check={false} allChecked={false} 
             key={track.tid} />)}
       </div>
     </MainContent>

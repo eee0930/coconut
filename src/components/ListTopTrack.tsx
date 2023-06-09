@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import Musics from "./mixins/Musics";
-import { ITopChart, Itrack, fetchTopTracks } from "../apis/deezerMusicApi";
+import { ITopChart, ITrack, fetchTopTracks } from "../apis/deezerMusicApi";
 import { Loader } from "../utils/globalStyles";
 import { getTopTrackList } from "../services/MusicServiceImpl";
 import { ITrackInfo } from "../atoms";
@@ -15,12 +15,12 @@ function ListTopTrack() {
 
   let topTracks;
   if(!isLoading) {
-    topTracks = getTopTrackList(data?.tracks.data as Itrack[]) as ITrackInfo[];
+    topTracks = getTopTrackList(data?.tracks.data as ITrack[]) as ITrackInfo[];
   }
   
   return <>
     <h2 className="title">
-      <Link to="/chart">
+      <Link to="/chart#track">
         <span>today's top 10</span>
         <i className="fa-solid fa-caret-right fa-fw" />
       </Link>

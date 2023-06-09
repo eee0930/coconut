@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const AlbumContainer = styled.div`
-padding: 8px;
-padding-left: 0;
+padding: 4px;
 color: ${props=> props.theme.black.darker};
 `;
 export const ImageSection = styled.div`

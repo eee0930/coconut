@@ -11,6 +11,10 @@ interface IGenreData {
   id: number;
   name: string;
 }
+interface ICreator {
+  id: number;
+  name: string;
+}
 
 // [for artist]-----------------------------------------------------------------
 export interface IArtist {
@@ -23,7 +27,6 @@ export interface IArtistInfo {
   name: string;
   picture_small: string;
   picture_big: string;
-  tracklist: string;
   type: string;
   nb_album: number;
 }
@@ -34,7 +37,6 @@ export interface IAlbum {
   title: string;
   cover_small: string;
   cover_big: string;
-  tracklist?: string;
   artist?: IArtist;
 }
 export interface IAlbumInfo {
@@ -51,7 +53,7 @@ export interface IAlbumInfo {
   contributors: IContributor[];
   artist: IArtist;
   tracks: {
-    data: Itrack[];
+    data: ITrack[];
   };
 }
 
@@ -62,12 +64,25 @@ export interface IPlayList {
   nb_tracks: number;
   picture_small: string;
   picture_big: string;
-  tracklist: string;
   creation_date: string;
+}
+export interface IPlaylistInfo {
+  id: number;
+  title: string;
+  description: string;
+  nb_tracks: number;
+  picture_small: string;
+  picture_big: string;
+  creation_date: string;
+  duration: number;
+  creator: ICreator;
+  tracks: {
+    data: ITrack[];
+  };
 }
 
 // [for track]------------------------------------------------------------------
-export interface Itrack {
+export interface ITrack {
   id: number;
   title_short: string;
   duration: number;
@@ -88,7 +103,7 @@ export interface ITrackInfo {
 
 // [for top rank]---------------------------------------------------------------
 export interface ITopTracks {
-  data: Itrack[];
+  data: ITrack[];
   total: number;
 }
 export interface ITopAlbums {
@@ -125,7 +140,7 @@ export const fetchTrackListByApiUrl = (url: string) => {
 };
 
 export const fetchTopTracks = () => {
-  const url = `${API_ROOT}chart/tracks`;
+  const url = `${API_ROOT}chart`;
   return fetchResponseData(url);
 };
 
@@ -154,6 +169,10 @@ export const fetchAlbumInfoById = (alid: number) => {
   const url = `${API_ROOT}album/${alid}`;
   return fetchResponseData(url);
 };
+export const fetchPlaylistInfoById = (pid: number) => {
+  const url = `${API_ROOT}playlist/${pid}`;
+  return fetchResponseData(url);
+};
 
 export const fetchSearchResultsByQuery = (query: string) => {
   const url = `${API_ROOT}search?q=${query}`;
@@ -169,5 +188,9 @@ export const fetchSearchArtistsByQuery = (query: string) => {
 };
 export const fetchSearchAlbumsByQuery = (query: string) => {
   const url = `${API_ROOT}search/album?q=${query}`;
+  return fetchResponseData(url);
+};
+export const fetchSearchPlaylistsByQuery = (query: string) => {
+  const url = `${API_ROOT}search/playlist?q=${query}`;
   return fetchResponseData(url);
 };

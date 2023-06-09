@@ -17,6 +17,7 @@ import ViewMusic from "./routes/ViewMusic";
 import ViewArtist from "./routes/ViewArtist";
 import ListChart from "./routes/ListChart";
 import ViewMixtape from "./routes/ViewMixtape";
+import ViewPlaylist from "./routes/ViewPlaylist";
 
 const router = createHashRouter([
   {
@@ -45,6 +46,9 @@ const router = createHashRouter([
           },{
             path: "album/:id",
             element: <ViewAlbum />,
+          },{
+            path: "playlist/:id",
+            element: <ViewPlaylist />,
           },{
             path: "music/:id",
             element: <ViewMusic />,

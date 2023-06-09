@@ -1,13 +1,17 @@
+import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { isLoggedInState } from "../atoms";
+
+// components
 import CocoButton from "../components/CocoButton";
 import ListTopTrack from "../components/ListTopTrack";
 import ListNewMixTape from "../components/ListNewMixTape";
+
+// styles
 import { MobileLogoSection, MemberCover, LogoutBtn, Nickname, MainContent } 
   from "../utils/screens/HomeStyles";
-import { Helmet } from "react-helmet";
-import { useEffect } from "react";
 
 function Home() {
   const isLoggedIn = useRecoilValue(isLoggedInState);

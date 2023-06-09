@@ -4,14 +4,13 @@ import { useParams } from "react-router";
 import { ITrackInfo } from "../atoms";
 
 // apis
-import { IAlbumInfo, ITrack, fetchAlbumInfoById } 
-  from "../apis/deezerMusicApi";
+import { IPlaylistInfo, ITrack, fetchPlaylistInfoById } from "../apis/deezerMusicApi";
 
 // utils
 import { Loader } from "../utils/globalStyles";
 
 // components
-import Tracks from "../components/mixins/Tracks";
+import Musics from "../components/mixins/Musics";
 
 // services
 import { getTrackList } from "../services/MusicServiceImpl";
@@ -25,20 +24,21 @@ import { TrackEleTopSection, CheckList, TrackInfo }
   from "../utils/components/MusicElementsStyles";
 import { ChartInfo } from "../utils/screens/ListChartStyles";
 
-function ViewAlbum() {
+
+function ViewPlaylist() {
   const { id } = useParams();
-  const { data: albumInfo, isLoading } = useQuery<IAlbumInfo>(
-    "albumInfo",
-    () => fetchAlbumInfoById(Number(id)),
+  const { data: playlist, isLoading } = useQuery<IPlaylistInfo>(
+    "playlistInfo",
+    () => fetchPlaylistInfoById(Number(id)),
     { retry: false }
   );
   const [checkAll, setCheckAll] = useState(false);
-
+  
   useEffect(() => window.scrollTo(0, 0), []);
 
-  let albumTracks;
+  let playlistTracks;
   if(!isLoading) {
-    albumTracks = getTrackList(albumInfo?.tracks?.data as ITrack[]) as ITrackInfo[];
+    playlistTracks = getTrackList(playlist?.tracks?.data as ITrack[]) as ITrackInfo[];
   }
 
   const handleCheckAll = () => setCheckAll(prev => !prev);
@@ -52,30 +52,17 @@ function ViewAlbum() {
     <AlbumInfoContainer className="row">
       <AlbumImgSection className="col-12 col-md-auto">
         <AlbumImg src={`${process.env.PUBLIC_URL}/img/default_paper.png`}
-          style={{ backgroundImage: `url(${albumInfo?.cover_big})` }}/>
+          style={{ backgroundImage: `url(${playlist?.picture_big})` }}/>
       </AlbumImgSection>
       <AlbumInfoSection className="col-12 col-md">
-        <AlbumTitle>{albumInfo?.title}</AlbumTitle>
-        <AlbumArtist>{albumInfo?.artist.name}</AlbumArtist>
+        <AlbumTitle>{playlist?.title}</AlbumTitle>
+        <AlbumArtist>{playlist?.creator.name}</AlbumArtist>
         <AlbumInfo>
-          <span>{albumInfo?.release_date.split(" ")[0]}</span>
+          <span>Since {playlist?.creation_date.split(" ")[0]}</span>
         </AlbumInfo>
-        {albumInfo?.genres && 
-          <AlbumDes>
-          {albumInfo?.genres.data.map(genre => 
-            <span key={genre.id}>{genre.name}</span>
-          )}
-          </AlbumDes>
-        }
-        {albumInfo?.contributors && 
-          <AlbumDes>
-          {albumInfo?.contributors.map(contributor => 
-            <span key={contributor.id}>
-              {contributor.name} ({contributor.type})
-            </span>
-          )}
-          </AlbumDes>
-        }
+        <AlbumDes>
+          <span>{playlist?.description}</span>
+        </AlbumDes>
         <ButtonSection>
           <AllPlayBtn>
             <ButtonBack></ButtonBack>
@@ -96,17 +83,16 @@ function ViewAlbum() {
         </CheckList>
         <TrackInfo className="col align-self-center">
           <ChartInfo>
-            Total {albumInfo?.nb_tracks}
+            Total {playlist?.nb_tracks}
           </ChartInfo>
         </TrackInfo>
       </TrackEleTopSection>
-      {albumTracks?.map((track, index) => 
-        <Tracks album={albumInfo?.title as string} track={track} 
-          allChecked={checkAll} key={index} />)
+      {playlistTracks?.map((track, index) => 
+        <Musics track={track} allChecked={checkAll} check={true} key={index} />)
       }
     </TracklistSection>
   </>}
   </>;
 }
 
-export default ViewAlbum;
+export default ViewPlaylist;

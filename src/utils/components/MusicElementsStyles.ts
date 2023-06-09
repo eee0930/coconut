@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const TrackEleSection = styled.div`
-padding: 5px;
+padding: 5px 0;
 background-color: transparent;
 margin-bottom: 5px;
 &:hover {
@@ -10,6 +10,17 @@ margin-bottom: 5px;
 &:hover .play-btn {
   opacity: 1;
 }
+@media(min-width: 768px) {
+  padding: 5px;
+}  
+`;
+export const TrackEleTopSection = styled.div`
+padding: 5px 0;
+background-color: transparent;
+margin-bottom: 5px;
+@media(min-width: 768px) {
+  padding: 5px;
+}  
 `;
 
 export const TrackEleCover = styled.div`
@@ -47,9 +58,11 @@ width: 30px;
 text-align: center; 
 font-size: 1rem;
 font-weight: 600;
+@media(min-width: 1200px) {
+  width: 50px;
+}
 `;
-export const AlbumInfo = styled.div`
-max-width: calc(100% - 115px);
+const InfoDefault = styled.div`
 > div {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -57,14 +70,47 @@ max-width: calc(100% - 115px);
   line-height: 1.2;
 }
 `;
+export const AlbumInfo = styled(InfoDefault)`
+max-width: calc(100% - 85px);
+padding-left: 10px;
+@media(min-width: 768px) {
+  max-width: calc(100% - 115px);
+  padding-left: 0px;
+}
+@media(min-width: 1200px) {
+  max-width: calc(100% - 285px);
+}
+`;
+export const TrackInfo = styled(InfoDefault)`
+max-width: calc(100% - 90px);
+@media(min-width: 1200px) {
+  max-width: calc(100% - 260px);
+}
+`;
 
-export const NameCover = styled.div`
+const NameCoverDefault = styled.div`
 font-size: 1.05rem;
 font-weight: 600;
+`;
+export const NameCover = styled(NameCoverDefault)`
 margin-bottom: 3px;
+`;
+export const TrackNameCover = styled(NameCoverDefault)`
+padding-left: 5px;
 `;
 export const ArtistCover = styled.div`
 font-size: 0.85rem;
+`;
+export const AlbumName = styled.div`
+font-weight: 600;  
+color: ${props => props.theme.black.lighter};
+font-size: 0.85rem;
+width: 150px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+line-height: 1.2;
+opacity: 0.6;
 `;
 export const PlaylistAlbumImg = styled.img`
 width: 55px;
