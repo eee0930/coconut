@@ -10,8 +10,10 @@ export const BaseLayoutContainer = styled.div`
 export const CocoContainer = styled.div`
   padding: ${props => props.theme.padding.sm};
   min-height: 80vh;
+  margin-bottom: 4rem;
   @media (min-width: 768px) {
     padding: ${props => props.theme.padding.md};
+    margin-bottom: 2rem;
   }
   @media (min-width: 1200px) {
     padding: ${props => props.theme.padding.lg};

@@ -1,29 +1,26 @@
 import styled from "styled-components";
 
-export const AlbumContainer = styled.div`
-padding: 4px;
+export const ArtistContainer = styled.div`
+padding: 0 8px 8px;
+margin-bottom: 0.5rem;
+padding-left: 0;
 color: ${props=> props.theme.black.darker};
 `;
 export const ImageSection = styled.div`
-margin-bottom: 5px;
+padding: 0 1rem;
 `;
 export const Image = styled.img`
 width: 100%;
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
+border-radius: 50%;
 `;
-export const TitleSection = styled.div`
+export const ArtistSection = styled.div`
 font-size: 1rem;
 font-weight: 600;
 margin-bottom: 5px;
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
+text-align: center;
 line-height: 1.2;
-`;
-
-export const AuthorSection = styled.div`
-font-size: 0.8rem;
-color: ${props=> props.theme.black.lighter};
+color: ${props=> props.theme.black.darker};
 `;

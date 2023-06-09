@@ -2,25 +2,27 @@ import { Link } from "react-router-dom";
 import { AlbumContainer, ImageSection, Image, 
   TitleSection, AuthorSection } 
   from "../../utils/components/AlbumElementStyles";
+import { IAlbum } from "../../apis/deezerMusicApi";
 
-function Albums(album: any) {
+interface IAlbums {
+  album: IAlbum;
+}
+function Albums({ album }: IAlbums) {
   return <>
-  <div className="col-6 col-md-3">
     <AlbumContainer>
       <ImageSection>
-        <Link to={`/mixtape/${album.alid}`}>
+        <Link to={`/album/${album.id}`}>
           <Image src={`${process.env.PUBLIC_URL}/img/default_paper.png`}
-            style={{ backgroundImage: `url(${album.image})` }}/>
+            style={{ backgroundImage: `url(${album.cover_big})` }}/>
         </Link>
       </ImageSection>
       <TitleSection>
         {album.title}
       </TitleSection>
       <AuthorSection>
-        {album.author}
+        {album.artist?.name}
       </AuthorSection>
     </AlbumContainer>
-  </div>
   </>;
 };
 

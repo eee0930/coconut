@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-function ListMixTape() {
+function ViewMixtape() {
   useEffect(() => window.scrollTo(0, 0), []);
   return null;
 }
 
-export default ListMixTape;
+export default ViewMixtape;

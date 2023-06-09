@@ -5,17 +5,19 @@ import { createHashRouter } from "react-router-dom";
 import ErrorComponent from "./components/ErrorComponent";
 
 // routes
+import NotFound from "./routes/NotFound";
 import Base from "./layout/Base";
 import Auth from "./layout/Auth";
 import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Search from "./routes/Search";
-import NotFound from "./routes/NotFound";
 import ListMixTape from "./routes/ListMixTape";
 import ViewAlbum from "./routes/ViewAlbum";
 import ViewMusic from "./routes/ViewMusic";
 import ViewArtist from "./routes/ViewArtist";
 import ListChart from "./routes/ListChart";
+import ViewMixtape from "./routes/ViewMixtape";
+import ViewPlaylist from "./routes/ViewPlaylist";
 
 const router = createHashRouter([
   {
@@ -38,12 +40,15 @@ const router = createHashRouter([
             children: [
               {
                 path: ":id",
-                element: <ViewAlbum />,
+                element: <ViewMixtape />,
               }
             ],
           },{
             path: "album/:id",
             element: <ViewAlbum />,
+          },{
+            path: "playlist/:id",
+            element: <ViewPlaylist />,
           },{
             path: "music/:id",
             element: <ViewMusic />,

@@ -10,7 +10,6 @@ interface IMixtapes {
 
 function Mixtapes({ data } : IMixtapes) {
   return <>
-  <div className="col-6 col-md-3">
     <AlbumContainer>
       <ImageSection>
         <Link to={`/mixtape/${data._id}`}>
@@ -25,7 +24,6 @@ function Mixtapes({ data } : IMixtapes) {
         {data.author}
       </AuthorSection>
     </AlbumContainer>
-  </div>
   </>;
 };
 

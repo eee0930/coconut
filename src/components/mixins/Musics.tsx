@@ -1,22 +1,32 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ITrackInfo } from "../../atoms";
-import { TrackEleSection, TrackEleCover, AlbumImage, PlayBtn, 
-  CheckList, TrackRank, AlbumInfo, NameCover, ArtistCover, PlaylistAlbumImg } 
+
+import { TrackEleSection, TrackEleCover, AlbumImage, PlayBtn, AlbumName, 
+  CheckList, TrackRank, AlbumInfo, NameCover, ArtistCover, PlaylistAlbumImg, LikeContainer } 
   from "../../utils/components/MusicElementsStyles";
 
 interface IMusics {
   track: ITrackInfo;
   check: boolean;
+  allChecked: boolean;
 };
 
-function Musics({ track, check }: IMusics) {
+function Musics({ track, check, allChecked }: IMusics) {
+  const [isChecked, setIsChecked] = useState(allChecked);
+    
+  const handleClickCheck = () => setIsChecked(prev => !prev);
+  const handleClickAllCheck = () => setIsChecked(!allChecked);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => handleClickAllCheck, [allChecked]);  
+
   return <>
   <TrackEleSection>
     <TrackEleCover className="row">
       {check && 
         <CheckList className="col-auto align-self-center">
-          <input type="checkbox" value={track.tid} name="trackList" 
-            className="option-input checkbox" />
+          <input type="checkbox" value={track.tid} 
+            onChange={handleClickCheck} checked={isChecked} />
         </CheckList>
       }
       <AlbumImage className="col-auto align-self-center">
@@ -27,7 +37,7 @@ function Musics({ track, check }: IMusics) {
         </PlayBtn>
       </AlbumImage>
       {track?.rank && 
-        <TrackRank className="col-auto align-self-center">
+        <TrackRank className="col-auto align-self-center d-none d-md-inline-block">
           {track.rank}
         </TrackRank>
       }
@@ -43,6 +53,16 @@ function Musics({ track, check }: IMusics) {
           </Link>
         </ArtistCover>
       </AlbumInfo>
+      <AlbumName className="col-auto align-self-center d-none d-xl-inline-block">
+        <Link to={`/album/${track.alid}`}>
+          {track.album}
+        </Link>
+      </AlbumName>
+      <LikeContainer className="col-auto align-self-center d-none d-md-inline-block">
+        <button className="likeBtn btn">
+          <i className="fa-regular fa-heart" />
+        </button>
+      </LikeContainer>
     </TrackEleCover>
   </TrackEleSection>
   </>;

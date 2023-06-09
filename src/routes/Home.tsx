@@ -1,16 +1,25 @@
+import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { isLoggedInState } from "../atoms";
+
+// components
 import CocoButton from "../components/CocoButton";
 import ListTopTrack from "../components/ListTopTrack";
 import ListNewMixTape from "../components/ListNewMixTape";
+
+// styles
 import { MobileLogoSection, MemberCover, LogoutBtn, Nickname, MainContent } 
   from "../utils/screens/HomeStyles";
 
 function Home() {
   const isLoggedIn = useRecoilValue(isLoggedInState);
-
+  useEffect(() => window.scrollTo(0, 0), []);
   return <>
+    <Helmet>
+      <title>Coconut Music</title>
+    </Helmet>
     {/* mobile logo */}
     <MobileLogoSection>
       <div className="row">

@@ -19,6 +19,7 @@ export interface ITrackInfo {
   imageSm: string;
   imageLg: string;
   rank?: number;
+  index?: number;
 };
 
 export interface INowPlaying {

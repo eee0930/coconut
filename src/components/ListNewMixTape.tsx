@@ -30,7 +30,9 @@ function ListNewMixTape() {
       </Loader> : <>
       <div className="row">
         {tapeList?.map(tape => 
-          <Mixtapes data={tape} key={tape._id} />
+          <div className="col-6 col-md-3" key={tape._id} >
+            <Mixtapes data={tape} />
+          </div>
         )}
       </div>
     </>}
