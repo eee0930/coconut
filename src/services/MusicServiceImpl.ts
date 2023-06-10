@@ -1,5 +1,6 @@
 import { ITrackInfo } from "../atoms";
 import { ITrack } from "../apis/deezerMusicApi";
+import { defaultMusics } from "../utils/data/defaultMusic";
 
 const getRefindTrackList = (track: ITrack) => {
   return {
@@ -17,27 +18,42 @@ const getRefindTrackList = (track: ITrack) => {
 }
 
 export const getTopTrackList = (data: ITrack[]) => {
-  const topTracks = data.slice(0, 10)
-    .map((track: ITrack, index: number) => {
-      const newTrack = getRefindTrackList(track);
-      const rank = index + 1;
-      return {
-        ...newTrack,
-        rank,
+  const dataLength = data.length;
+  if(dataLength > 10) {
+    data = data.slice(0, 10);
+  }
+  const topTracks = data.map((track: ITrack, idx: number) => {
+    const newTrack = getRefindTrackList(track);
+    const rank = idx + 1;
+    return {
+      ...newTrack,
+      rank,
+    }
+  });
+  if(dataLength < 10) {
+    const leastSize = 10 - dataLength;
+    for(let i = 0; i < leastSize; i++) {
+      const addedMusic = {
+        ...defaultMusics[i],
+        rank: dataLength + i + 1,
       }
-    });
+      topTracks.push(addedMusic);
+    }
+  }
   return topTracks as ITrackInfo[];
 }
 
 export const getTrackList = (data: ITrack[]) => {
   const topTracks = data
-    .map((track: ITrack, index: number) => {
+    .map((track: ITrack, idx: number) => {
       const newTrack = getRefindTrackList(track);
-      const rank = index + 1;
+      const index = idx + 1;
       return {
         ...newTrack,
-        rank,
+        index,
       }
     });
   return topTracks as ITrackInfo[];
 }
+
+

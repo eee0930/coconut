@@ -58,6 +58,7 @@ width: 30px;
 text-align: center; 
 font-size: 1rem;
 font-weight: 600;
+padding-left: 5px;
 @media(min-width: 1200px) {
   width: 50px;
 }
@@ -75,14 +76,16 @@ max-width: calc(100% - 85px);
 padding-left: 10px;
 @media(min-width: 768px) {
   max-width: calc(100% - 115px);
-  padding-left: 0px;
+  padding: 0 5px;
 }
 @media(min-width: 1200px) {
   max-width: calc(100% - 285px);
+  padding: 0 8px;
 }
 `;
 export const TrackInfo = styled(InfoDefault)`
 max-width: calc(100% - 90px);
+padding: 0 3px;
 @media(min-width: 1200px) {
   max-width: calc(100% - 260px);
 }

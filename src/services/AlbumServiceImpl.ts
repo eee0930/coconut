@@ -33,3 +33,8 @@ export const getTopPlaylistList = (data: IPlayList[]) => {
     }
   });
 }
+
+export const getMixtapeById = (mixtapes: IMixtape[], id: string) => {
+  const mixtape = mixtapes.filter(tape => tape._id === id)[0];
+  return mixtape;
+}

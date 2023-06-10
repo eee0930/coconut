@@ -5,6 +5,8 @@
       "tapeImage": "/mixtape/tape01.png",
       "title": "격렬하게 아무것도 안 하고 싶다",
       "author": "coconut",
+      "description": "격렬하게 아무 것도 안 하고 싶은 요즘... 나는.. 침대에 누워서 하루를 보내며 죄책감을 느낄 것 같지만 해당 노래들을 들으며 전혀 그러한 감정을 느끼지 않기는 개뿔, 오늘도 후회를 간식으로 일삼으며 눈물겨운 하루를 보낸다.",
+      "creation_date": "2022-10-30",
       "songList": [{
         "tid": 1494078012,
         "name": "All Damn Day!",
@@ -32,6 +34,8 @@
       "tapeImage": "/mixtape/tape02.png",
       "title": "아가씨 마차 대기시켜 놨습니다",
       "author": "lazyhysong",
+      "description": "아가씨, 세상을 구경할 준비가 끝나셨습니까? 오늘 드레스는 평민들에게 눈에 띄지 않기 위해 아주 수수하게 차려 입으셨군요. 축제에 너무 정신을 뺏기면 안됩니다. 오늘 저녁엔 공작님과의 저녁 약속이 있으니깐요.",
+      "creation_date": "2023-04-30",
       "songList": [{
         "tid": 1057395102,
         "name": "Power",
@@ -79,6 +83,8 @@
       "tapeImage": "/mixtape/tape03.png",
       "title": "없던 약속도 만들어야겠어",
       "author": "hahah",
+      "description": "아 너무 신나잖아? 나는 왜 지금 집에 있는 거지? 안되겠어. 지금 당장 집에 쳐박혀 있는 친구들을 내가 구제해 줘야겠어. 친구들아! 지금 만나자!",
+      "creation_date": "2022-12-31",
       "songList": [{
         "tid": 1952725537,
         "name": "Pretty Girls Walk",
@@ -116,6 +122,8 @@
       "tapeImage": "/mixtape/tape04.png",
       "title": "아이돌 데뷔 3일 전",
       "author": "lazyhysong",
+      "description": "3년간의 지독한 연습. 오직 연습연습연습. 그 진가를 발휘할 때가 다 되었다. 이제 3일 뒤면 나의 노력을 세상에 보여줄 때가 되었다.",
+      "creation_date": "2023-09-10",
       "songList": [{
         "tid": 1090993922,
         "name": "Pumping Up Clouds",
@@ -143,6 +151,8 @@
       "tapeImage": "/mixtape/tape05.png",
       "title": "하루만 부잣집 고양이로 살고 싶다",
       "author": "coconut",
+      "description": "야옹.. 아무 것도 하기 싫다. 누군가를 미워해도, 누군가를 괴롭혀도, 누군가에게 관심을 주지않아도, 새침하게 굴어도 가만히 사랑만 먹고 살고싶다.",
+      "creation_date": "2023-01-28",
       "songList": [{
         "tid": 1584624932,
         "name": "Isn't This A Lovely Day",
@@ -170,6 +180,8 @@
       "tapeImage": "/mixtape/tape06.gif",
       "title": "차트 뚫고 급 상승",
       "author": "coconut",
+      "description": "아니? 이런 노래들이 있었어? 차트를 뚫고 급 상승한 나만 알던 노래들이 여기 있습니다!",
+      "creation_date": "2023-05-16",
       "songList": [{
         "tid": 2255558277,
         "name": "Half & Half",
