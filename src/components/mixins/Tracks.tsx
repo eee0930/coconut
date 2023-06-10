@@ -28,7 +28,7 @@ function Tracks({ album, track, allChecked }: ITracks) {
           onChange={handleClickCheck} checked={isChecked} />
       </CheckList>
       <TrackRank className="col-auto align-self-center">
-        {track.rank}
+        {track.index}
       </TrackRank>
       <TrackInfo className="col align-self-center">
         <TrackNameCover>

@@ -1,14 +1,22 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
-import Mixtapes from "./mixins/Mixtapes";
+
+// services
 import { getNewMixtapeList } from "../services/AlbumServiceImpl";
+
+// apis
 import { IMixtape, ITapeDatas, fetchTapeDatas } from "../apis/localApi";
+
+// styles
 import { Loader } from "../utils/globalStyles";
+
+// components
+import Mixtapes from "./mixins/Mixtapes";
 
 function ListNewMixTape() {
   const { data, isLoading } = useQuery<ITapeDatas>(
     "tapeList", 
-    () => fetchTapeDatas(), 
+    fetchTapeDatas, 
     { retry: 0 }
   );
 

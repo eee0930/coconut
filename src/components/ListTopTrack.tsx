@@ -1,15 +1,23 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
-import Musics from "./mixins/Musics";
-import { ITopChart, ITrack, fetchTopTracks } from "../apis/deezerMusicApi";
-import { Loader } from "../utils/globalStyles";
-import { getTopTrackList } from "../services/MusicServiceImpl";
 import { ITrackInfo } from "../atoms";
+
+// apis
+import { ITopChart, ITrack, fetchTopTracks } from "../apis/deezerMusicApi";
+
+// services
+import { getTopTrackList } from "../services/MusicServiceImpl";
+
+// components
+import Musics from "./mixins/Musics";
+
+// styles
+import { Loader } from "../utils/globalStyles";
 
 function ListTopTrack() {
   const { data, isLoading } = useQuery<ITopChart>(
     "topChart", 
-    () => fetchTopTracks(), 
+    fetchTopTracks, 
     { retry: 0 }
   );
 
@@ -32,11 +40,13 @@ function ListTopTrack() {
       <div className="row">
         <div className="col-12 col-md-6">
           {topTracks?.slice(0, 5).map(track => 
-            <Musics track={track} check={false} allChecked={false} key={track.tid} />)}
+            <Musics track={track} check={false} allChecked={false} 
+              key={track.tid} />)}
         </div>
         <div className="col-12 col-md-6">
           {topTracks?.slice(5).map(track => 
-            <Musics track={track} check={false} allChecked={false} key={track.tid} />)}
+            <Musics track={track} check={false} allChecked={false} 
+              key={track.tid} />)}
         </div>
       </div>
     </>}

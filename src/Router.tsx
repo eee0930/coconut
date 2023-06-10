@@ -37,12 +37,9 @@ const router = createHashRouter([
           },{
             path: "mixtape",
             element: <ListMixTape />,
-            children: [
-              {
-                path: ":id",
-                element: <ViewMixtape />,
-              }
-            ],
+          },{
+            path: "mixtape/:id",
+            element: <ViewMixtape />,
           },{
             path: "album/:id",
             element: <ViewAlbum />,

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router";
+import { Helmet } from "react-helmet";
 import { ITrackInfo } from "../atoms";
 
 // apis
@@ -44,6 +45,9 @@ function ViewAlbum() {
   const handleCheckAll = () => setCheckAll(prev => !prev);
 
   return <>
+  <Helmet>
+    <title>{isLoading ? "Album" : albumInfo?.title} | Coconut</title>
+  </Helmet>
   {isLoading ? 
     <Loader>
       <div><div></div><div></div></div>

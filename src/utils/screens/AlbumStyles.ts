@@ -59,7 +59,9 @@ export const AlbumInfo = styled(AlbumSide)`
   margin-right: 5px;
  }
 `;
-export const AlbumDes = styled(AlbumSide)``;
+export const AlbumDes = styled(AlbumSide)`
+line-height: 1.2;
+`;
 export const MoreBtn = styled.button`
 border: 1px solid ${props => props.theme.white.veryDark};
 font-size: 12px;

@@ -130,7 +130,7 @@ const fetchResponseData = (url: string) => {
   try {
     return fetch(url).then(response => response.json());
   } catch (error: any) {
-    console.error(error.message);
+    console.error("🛑", error.message);
     throw error;
   }
 };

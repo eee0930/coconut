@@ -5,12 +5,14 @@ export interface IMixtape {
   tapeImage: string;
   title: string;
   author: string;
+  description: string;
+  creation_date: string;
   songList: ITrackInfo[];
-}
+};
 
 export interface ITapeDatas {
   data: IMixtape[];
-}
+};
 
 const fetchResponseData = (url: string) => {
   try {
@@ -24,4 +26,10 @@ const fetchResponseData = (url: string) => {
 export const fetchTapeDatas = () => {
   const url = `${process.env.PUBLIC_URL}/data/tapeDatas.json`;
   return fetchResponseData(url);
-}
+};
+
+export const fetchMusicDatas = () => {
+  const url = `${process.env.PUBLIC_URL}/data/musicDatas.json`;
+  return fetchResponseData(url);
+};
+
