@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 // apis
 import { fetchVideoIdsByQuery } from "../apis/youtubeApi";
+
+// styles
 import { Loader } from "../utils/globalStyles";
 
 const Iframe = styled.iframe`
@@ -39,6 +41,7 @@ function Video({ query }: IVideo) {
       src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`}
       frameBorder="0"
       allowFullScreen
+      rel="0"
       allow='autoplay; encrypted-media' />
   </>}
   </>;

@@ -32,3 +32,10 @@ export const fetchVideoIdsByQuery = (q: string) => {
   const url = `${API_ROOT}search?key=${API_KEY}&type=video&q=${q}`;
   return fetchResponseData(url);
 }
+
+export const fetchYoutubeIdsByQuery = async(q: string) => {
+  const url = `${API_ROOT}search?key=${API_KEY}&type=video&q=${q}`;
+  const response = await fetch(url);
+  const data = response.json();
+  return data;
+}

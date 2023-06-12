@@ -20,6 +20,7 @@ export interface ITrackInfo {
   imageLg: string;
   rank?: number;
   index?: number;
+  videoId?: string;
 };
 
 export interface INowPlaying {
