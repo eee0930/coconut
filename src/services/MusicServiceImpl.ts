@@ -6,7 +6,9 @@ import { getVideoIdByMusicInfo } from "../services/VideoServiceImpl";
 const getRefindTrackList = async (track: ITrack) => {
   const artist = track.artist.name;
   const name = track.title_short;
-  const videoId = await getVideoIdByMusicInfo(`${artist}+${name}`) as string;
+  console.log("헤이")
+  const videoId = await getVideoIdByMusicInfo(`${artist}${name}`) as string;
+  console.log("헤이", videoId)
   return {
     tid: track.id,
     name,
@@ -57,6 +59,10 @@ export const getTrackList = (data: ITrack[]) => {
     }
   }) as unknown as ITrackInfo[];
   return topTracks;
+}
+
+export const getTrackInfo = async (data: ITrack) => {
+  return await getRefindTrackList(data);
 }
 
 

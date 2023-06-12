@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 // apis
 import { ITrackInfo, fetchTrackInfoById } from "../apis/deezerMusicApi";
 
+// services
+import { getTrackInfo } from "../services/MusicServiceImpl";
+
 // styles
 import { Loader } from "../utils/globalStyles";
 import Video from "../components/Video";
@@ -19,6 +22,10 @@ function ViewMusic() {
 
   useEffect(() => window.scrollTo(0, 0), []);
 
+  let refindInfo;
+  if(!isLoading && musicInfo) {
+    refindInfo = getTrackInfo(musicInfo);
+  }
   return <>
   {isLoading ? 
     <Loader>
@@ -26,7 +33,7 @@ function ViewMusic() {
         <div></div><div></div>
       </div>
     </Loader> : <>
-    <Video query={`${musicInfo?.title_short}+${musicInfo?.artist.name}`} />
+    {/* <Video videoId={refindInfo?.videoId as string} /> */}
   </>}
   </>;
 }
