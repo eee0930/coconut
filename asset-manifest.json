@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/coconut/static/js/main.fdfeb45e.js",
+    "main.js": "/coconut/static/js/main.2d1c638c.js",
     "index.html": "/coconut/index.html",
-    "main.fdfeb45e.js.map": "/coconut/static/js/main.fdfeb45e.js.map"
+    "main.2d1c638c.js.map": "/coconut/static/js/main.2d1c638c.js.map"
   },
   "entrypoints": [
-    "static/js/main.fdfeb45e.js"
+    "static/js/main.2d1c638c.js"
   ]
 }
