@@ -10,8 +10,8 @@ import { isLoggedInState } from "../atoms";
 function SideMenuForPC() {
   const isLoggedIn = useRecoilValue(isLoggedInState);
   const homeMatch = useMatch("/");
-  const chartMatch = useMatch("/chart");
-  const tapeMatch = useMatch("/mixtape");
+  const chartMatch = useMatch("/chart/*");
+  const tapeMatch = useMatch("/mixtape/*");
   const archiveMatch = useMatch("/archive");
   
   return <>
