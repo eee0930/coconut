@@ -93,16 +93,19 @@ $ npm run deploy
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white"/>
 </div>
 
-
 <br><br>
 
+
+
 ## Key Features
+<div>
 <ol>
   <li>메인화면에서 전세계적으로 인기있는 음악들을 매일 제공해 줌</li>
   <li>다른 사람이 만든 플레이리스트로 주제별 음악을 들을 수 있음</li>
   <li>검색을 통해 원하는 음악, 가수, 앨범을 찾을 수 있음</li>
   <li>나의 플레이리스트를 직접 만들어 다른 사람들이 나의 음악을 들을 수 있음</li>
 <ol>
+</div>
 <br><br>
 
 
