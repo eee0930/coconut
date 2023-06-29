@@ -1,39 +1,192 @@
-# Coconut Music
+# Coconut Music 🎵
+<div align="center">
+<img width="220px" src="https://github.com/eee0930/coconut/assets/37135523/540ad143-e17e-4add-9b5d-ddb3c315ead8" />
+</div>
 
-Click Here!
-[https://eee0930.github.io/coconut](https://eee0930.github.io/coconut)
 
-## How to run?
 
-- Open this folder on VSCode.
+## Deployment
+**github pages:** [https://eee0930.github.io/coconut](https://eee0930.github.io/coconut).
+
+<br><br>
+
+
+
+## Project Info
+### Goal
+<ol>
+  <li>유튜브에서 듣고싶은 음악을 검색하여 영상으로 음악을 듣는대신 나의 플레이리스트를 만들어 영상없이 원하는 음악을 들을 수 있도록 구현</li>
+  <li>메인화면에서 전세계적으로 인기있는 음악들을 매일 제공해줌</li>
+  <li>다른 사람이 만든 플레이리스트로 주제별 음악을 들을 수 있도록 구현</li>
+  <li>검색을 통해 원하는 음악, 가수, 앨범을 찾을 수 있도록 구현</li>
+  <li>나의 플레이리스트를 직접 만들어 다른 사람들이 나의 음악을 들을 수 있도록 구현</li>
+</ol>
+
+### Period
+2023-05-20 ~ 
+
+
+<br><br>
+
+
+
+## Getting Started 🏃‍♀️
+### Requirements
+For building and running the application you need:
+- [npm](https://www.npmjs.com/package/npm/v/9.2.0)
+
+### Installation
+``` bash
+$ git clone https://github.com/eee0930/coconut.git
+$ cd netflix_clone
+$ code .
+```
+
+### How to run
+- Change the `REACT_APP_MOVIE_API_KEY` on the `.env.example` file.
 - Click on `View` -> `Terminal`.
-- Run `npm i`.
-- Run `npm start`.
-- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Run 
+```
+$ npm install
+$ npm start
+```
 
-## Planning Routes
+### How to deploy?
+- Change the `homepage` on the `package.json` file.
+```
+$ npm run deploy
+```
 
-#### `global` routes
-- / -> Home
-- /auth/login -> Login
-- /search/:query -> Search Results
 
-#### `music` routes
-- /music/:id -> View Music info
-
-#### `artist` routes
-- /artist/:id -> View Artist Info
-
-#### `album` routes
-- /album/:id -> View Album Info and Song list
-
-#### `mixtape` routes
-- /mixtape -> List Mixtapes
-- /mixtape/:id -> View Mixtape Info and Song List
-
-#### `chart` routes
-- /chart -> List Tracks, Artists, Albums and Playlists Chart
+<br><br>
 
 
 
+## Stacks 📚
+### Libraries & Languages
+<div>
+<img src="https://img.shields.io/badge/TypeScript-444444?style=for-the-badge&logo=typescript&logoColor=61DAFB"/>
+<img src="https://img.shields.io/badge/React-333333?style=for-the-badge&logo=React&logoColor=61DAFB"/>
+<img src="https://img.shields.io/badge/Styled Components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"/>
+<img src="https://img.shields.io/badge/Recoil-018EF5?style=for-the-badge&logo=redux&logoColor=white"/>
+<img src="https://img.shields.io/badge/React Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white"/>
+<img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white"/>
+<img src="https://img.shields.io/badge/React Hook Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white"/>
+<img src="https://img.shields.io/badge/Framer Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white"/>
+</div>
 
+### Config
+<div>
+<img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white"/>
+</div>
+
+### Environment
+<div>
+<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white"/>
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</div>
+
+### Management & Communication
+<div>
+<img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white"/>
+<img src="https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white"/>
+<img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white"/>
+</div>
+
+
+<br><br>
+
+
+
+## Screens and Introduction 🎬
+### 1. list contents
+<div>
+<img width="80%" src="https://github.com/eee0930/netflix_clone/assets/37135523/914f9562-b038-4b06-a5ad-4596fc825a2e.gif"/>
+
+#### skills & issues
+<ol>
+  <li>movies, tv show, weekly trends 화면에서 재사용할 수 있도록 slider를 compoenent로 나눔</li>
+  <li>component가 destroy되거나 render 될 떄 효과를 줄 수 있는 AnimationPresence를 이용하여 slider가 넘어가는 효과를 줌. 
+  slider의 key를 index라는 number type으로 주고 slider를 넘기는 버튼을 클릭하면 index가 변화되도록 함. 
+  index가 바뀌면 reactjs는 새로운 slider가 생성되었다고 생각하여 slider 애니메이션 효과를 줄 수 있음.</li>
+  <li>slider 버튼을 빠르게 두번 클릭하면 slider가 destroy 되기 전에 새로운 slider가 render 되어 버려서 component contents가 꼬여버리는 버그가 생김.
+  slider가 움직이고 있다는 의미를 가진 leaving이라는 state를 정의하고, AnimatePresence의 onExitComplete prop을 사용하여 leaving이 true인 동안은 버튼이 동작하지 않게 구현
+  </li>
+  <li>화면을 리렌더링했을 때 components가 render 되어서 버튼을 클릭하지 않았는데도 slider 애니메이션 효과가 나타나는 버그가 생김.
+  AnimatePresence에 initial prop을 이용하여 initail 값을 false로 설정하여 해결함.
+  </li>
+</ol>
+</div>
+
+
+
+<br><br>
+
+
+
+## Architecture
+
+### Directory structure
+```bash
+ ┣ apis
+ ┃ ┣ deezerMusicApi.ts
+ ┃ ┣ localApi.ts
+ ┃ ┗ youtubeApi.ts
+ ┣ components
+ ┃ ┣ mixins
+ ┃ ┃ ┣ Albums.tsx
+ ┃ ┃ ┣ Artists.tsx
+ ┃ ┃ ┣ Mixtapes.tsx
+ ┃ ┃ ┣ Musics.tsx
+ ┃ ┃ ┣ Playlists.tsx
+ ┃ ┃ ┗ Tracks.tsx
+ ┃ ┣ CocoButton.tsx
+ ┃ ┣ CocoPlayer.tsx
+ ┃ ┣ ErrorComponent.tsx
+ ┃ ┣ ListNewMixTape.tsx
+ ┃ ┣ ListTopTrack.tsx
+ ┃ ┣ SideMenuForMobile.tsx
+ ┃ ┣ SideMenuForPC.tsx
+ ┃ ┣ ThemeButton.tsx
+ ┃ ┗ Video.tsx
+ ┣ layout
+ ┃ ┣ Auth.tsx
+ ┃ ┗ Base.tsx
+ ┣ routes
+ ┃ ┣ Home.tsx
+ ┃ ┣ ListChart.tsx
+ ┃ ┣ ListMixTape.tsx
+ ┃ ┣ Login.tsx
+ ┃ ┣ NotFound.tsx
+ ┃ ┣ Search.tsx
+ ┃ ┣ ViewAlbum.tsx
+ ┃ ┣ ViewArtist.tsx
+ ┃ ┣ ViewMixtape.tsx
+ ┃ ┣ ViewMusic.tsx
+ ┃ ┗ ViewPlaylist.tsx
+ ┣ services
+ ┃ ┣ AlbumServiceImpl.ts
+ ┃ ┣ ArtistServiceImpl.ts
+ ┃ ┗ MusicServiceImpl.ts
+ ┣ utils
+ ┃ ┣ components
+ ┃ ┃ ┣ AlbumElementStyles.ts
+ ┃ ┃ ┣ ArtistElementStyles.ts
+ ┃ ┃ ┣ CocoPlayerStyles.ts
+ ┃ ┃ ┣ MusicElementsStyles.ts
+ ┃ ┃ ┗ SideMenuStyles.ts
+ ┃ ┣ data
+ ┃ ┃ ┗ defaultMusic.ts
+ ┃ ┣ screens
+ ┃ ┃ ┣ AlbumStyles.ts
+ ┃ ┃ ┣ HomeStyles.ts
+ ┃ ┃ ┗ ListChartStyles.ts
+ ┃ ┣ globalStyles.ts
+ ┃ ┣ layoutStyles.ts
+ ┃ ┣ styled.d.ts
+ ┃ ┗ theme.ts
+ ┣ App.tsx
+ ┣ Router.tsx
+ ┣ atoms.tsx
+ ┗ index.tsx
+ ```
