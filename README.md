@@ -96,6 +96,12 @@ $ npm run deploy
 
 <br><br>
 
+## Key Features
+<ol>
+<li></li>
+<ol>
+<br><br>
+
 
 
 ## Screens and Introduction 🎬
