@@ -15,7 +15,10 @@
 ## Project Info
 > **1인 프로젝트**
 
-### Goal
+### 개발 기획안
+[https://www.notion.so/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4](https://www.notion.so/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4)
+
+### 목표
 <ol>
   <li>유튜브에서 듣고싶은 음악을 검색하여 영상으로 음악을 듣는대신 나의 플레이리스트를 만들어 영상없이 원하는 음악을 들을 수 있도록 구현</li>
   <li>메인화면에서 전세계적으로 인기있는 음악들을 매일 제공해줌</li>
