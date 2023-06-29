@@ -31,7 +31,7 @@
   <li>나의 플레이리스트를 직접 만들어 다른 사람들이 나의 음악을 들을 수 있도록 구현</li>
 </ol>
 
-### Period
+### 작업기간
 - **기획:** 2023-05-20 ~ 2023-05-25 
 - **개발:** 2023-05-25 ~ 
 - **업데이트 및 버그수정:** 
@@ -62,7 +62,7 @@ $ npm install
 $ npm start
 ```
 
-### How to deploy?
+### How to deploy
 - Change the `homepage` on the `package.json` file.
 ```
 $ npm run deploy
@@ -108,33 +108,11 @@ $ npm run deploy
 
 
 
-## Screens and Key Features
+## Screens and Key Features 🎬
 <div>
 <h3>전세계적으로 인기있는 음악들을 매일 제공</h3>
-<div></div>
-
-<h3>나만의 플레이리스트로 랜덤, 한곡 플레이 등 있을 건 다 있는 플레이어</h3>
-<div></div>
-
-<h3>다른 사람이 만든 플레이리스트로 주제별 음악을 들을 수 있음</h3>
-<div></div>
-
-<h3>검색을 통해 원하는 음악, 가수, 앨범을 찾을 수 있음</h3>
-<div></div>
-
-<h3>귀엽고 키치한 디자인 ✨</h3>
-<div></div>
-</div>
-<br><br>
-
-
-
-## Screens and Introduction 🎬
-### 1. list contents
 <div>
-<img width="80%" src="https://github.com/eee0930/netflix_clone/assets/37135523/914f9562-b038-4b06-a5ad-4596fc825a2e.gif"/>
-
-#### skills & issues
+<h4>skills & issues</h4>
 <ol>
   <li>movies, tv show, weekly trends 화면에서 재사용할 수 있도록 slider를 compoenent로 나눔</li>
   <li>component가 destroy되거나 render 될 떄 효과를 줄 수 있는 AnimationPresence를 이용하여 slider가 넘어가는 효과를 줌. 
@@ -149,8 +127,18 @@ $ npm run deploy
 </ol>
 </div>
 
+<h3>나만의 플레이리스트로 랜덤, 한곡 플레이 등 있을 건 다 있는 플레이어</h3>
+<div></div>
 
+<h3>다른 사람이 만든 플레이리스트로 주제별 음악을 들을 수 있음</h3>
+<div></div>
 
+<h3>검색을 통해 원하는 음악, 가수, 앨범을 찾을 수 있음</h3>
+<div></div>
+
+<h3>귀엽고 키치한 디자인 ✨</h3>
+<div></div>
+</div>
 <br><br>
 
 
