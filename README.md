@@ -1,8 +1,6 @@
+# Coconut Music 🎵
 <div align="center">
-
-# Coconut Music
-
-<img width="300px" src="https://github.com/eee0930/coconut/assets/37135523/540ad143-e17e-4add-9b5d-ddb3c315ead8" />
+<img width="220px" src="https://github.com/eee0930/coconut/assets/37135523/540ad143-e17e-4add-9b5d-ddb3c315ead8" />
 </div>
 
 
