@@ -17,7 +17,7 @@
 
 |[송화연](https://github.com/lazyhysong)|TMI|
 | :-: | - |
-|<img src="https://avatars.githubusercontent.com/lazyhysong" width=150px><br />|- 프론트엔드 개발자를 지망하고 있습니다 🧑🏻‍💻<br />- 바닐라 자바스크립트로 코딩하는 것을 좋아합니다 🍨 <br />- 그림그리기와 영상찍기가 취미입니다 👾<br />- 밝은 INTP <br />- 물리학을 전공했습니다 🗼|
+|<img src="https://avatars.githubusercontent.com/u/37135523?v=4" width=150px><br />|- 프론트엔드 개발자를 지망하고 있습니다 👩‍💻<br />- 바닐라 자바스크립트로 코딩하는 것을 좋아합니다 🍨 <br />- 그림그리기와 영상찍기가 취미입니다 🎨<br />- 밝은 INTP 😙<br />- 물리학을 전공했습니다 🐈‍⬛|
 
 ### 개발 기획안
 [https://placid-tortoise-06c.notion.site/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4](https://placid-tortoise-06c.notion.site/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4)
