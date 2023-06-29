@@ -16,7 +16,7 @@
 > **1인 프로젝트**
 
 ### 개발 기획안
-[https://www.notion.so/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4](https://www.notion.so/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4)
+[https://placid-tortoise-06c.notion.site/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4](https://placid-tortoise-06c.notion.site/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4)
 
 ### 목표
 <ol>
