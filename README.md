@@ -2,7 +2,7 @@
 
 # Coconut Music
 
-<img src="https://github.com/eee0930/coconut/assets/37135523/540ad143-e17e-4add-9b5d-ddb3c315ead8" />
+<img width="300px" src="https://github.com/eee0930/coconut/assets/37135523/540ad143-e17e-4add-9b5d-ddb3c315ead8" />
 </div>
 
 
@@ -17,7 +17,7 @@
 ## Project Info
 ### Goal
 <ol>
-  <li>일일이 유튜브에서 검색하여 영상으로 음악을 듣는대신 나의 플레이리스트를 만들어 유튜브로 영상없이 원하는 음악을 들을 수 있도록 구현</li>
+  <li>유튜브에서 듣고싶은 음악을 검색하여 영상으로 음악을 듣는대신 나의 플레이리스트를 만들어 영상없이 원하는 음악을 들을 수 있도록 구현</li>
   <li>메인화면에서 전세계적으로 인기있는 음악들을 매일 제공해줌</li>
   <li>다른 사람이 만든 플레이리스트로 주제별 음악을 들을 수 있도록 구현</li>
   <li>검색을 통해 원하는 음악, 가수, 앨범을 찾을 수 있도록 구현</li>
