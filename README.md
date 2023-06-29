@@ -6,16 +6,16 @@
 
 
 ## Deployment
-**github pages:** [https://eee0930.github.io/coconut](https://eee0930.github.io/coconut).
+**github pages:** [https://eee0930.github.io/coconut](https://eee0930.github.io/coconut)
 
 <br><br>
 
 
 
 ## Project Info
-### 1인 프로젝트
+- **1인 프로젝트**
 
-### Goal
+- Goal
 <ol>
   <li>유튜브에서 듣고싶은 음악을 검색하여 영상으로 음악을 듣는대신 나의 플레이리스트를 만들어 영상없이 원하는 음악을 들을 수 있도록 구현</li>
   <li>메인화면에서 전세계적으로 인기있는 음악들을 매일 제공해줌</li>
@@ -24,9 +24,9 @@
   <li>나의 플레이리스트를 직접 만들어 다른 사람들이 나의 음악을 들을 수 있도록 구현</li>
 </ol>
 
-### Period
-**기획:** 2023-05-20 ~ 2023-05-25
-**개발:** 2023-05-25 ~ 
+- Period
+**기획:** 2023-05-20 ~ 2023-05-25 <br>
+**개발:** 2023-05-25 ~ <br>
 **업데이트 및 버그수정:** 
 
 
