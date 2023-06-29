@@ -6,14 +6,23 @@
 
 
 ## Deployment
-**github pages:** [https://eee0930.github.io/coconut](https://eee0930.github.io/coconut).
+**github pages:** [https://eee0930.github.io/coconut](https://eee0930.github.io/coconut)
 
 <br><br>
 
 
 
 ## Project Info
-### Goal
+### Coconut Music을 만든 사람
+
+|[송화연](https://github.com/lazyhysong)|TMI|
+| :-: | - |
+|<img src="https://avatars.githubusercontent.com/u/37135523?v=4" width=150px><br />|- 프론트엔드 개발자를 지망하고 있습니다 👩‍💻<br />- 바닐라 자바스크립트로 코딩하는 것을 좋아합니다 🍨 <br />- 그림그리기와 영상찍기가 취미입니다 🎨<br />- 밝은 INTP 😙<br />- 물리학을 전공했습니다 🐈‍⬛|
+
+### 개발 기획안
+[https://placid-tortoise-06c.notion.site/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4](https://placid-tortoise-06c.notion.site/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4)
+
+### 목표
 <ol>
   <li>유튜브에서 듣고싶은 음악을 검색하여 영상으로 음악을 듣는대신 나의 플레이리스트를 만들어 영상없이 원하는 음악을 들을 수 있도록 구현</li>
   <li>메인화면에서 전세계적으로 인기있는 음악들을 매일 제공해줌</li>
@@ -22,8 +31,10 @@
   <li>나의 플레이리스트를 직접 만들어 다른 사람들이 나의 음악을 들을 수 있도록 구현</li>
 </ol>
 
-### Period
-2023-05-20 ~ 
+### 작업기간
+- **기획:** 2023-05-20 ~ 2023-05-25 
+- **개발:** 2023-05-25 ~ 
+- **업데이트 및 버그수정:** 
 
 
 <br><br>
@@ -51,7 +62,7 @@ $ npm install
 $ npm start
 ```
 
-### How to deploy?
+### How to deploy
 - Change the `homepage` on the `package.json` file.
 ```
 $ npm run deploy
@@ -93,17 +104,15 @@ $ npm run deploy
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white"/>
 </div>
 
-
 <br><br>
 
 
 
-## Screens and Introduction 🎬
-### 1. list contents
+## Screens and Key Features 🎬
 <div>
-<img width="80%" src="https://github.com/eee0930/netflix_clone/assets/37135523/914f9562-b038-4b06-a5ad-4596fc825a2e.gif"/>
-
-#### skills & issues
+<h3>전세계적으로 인기있는 음악들을 매일 제공</h3>
+<div>
+<h4>skills & issues</h4>
 <ol>
   <li>movies, tv show, weekly trends 화면에서 재사용할 수 있도록 slider를 compoenent로 나눔</li>
   <li>component가 destroy되거나 render 될 떄 효과를 줄 수 있는 AnimationPresence를 이용하여 slider가 넘어가는 효과를 줌. 
@@ -118,8 +127,18 @@ $ npm run deploy
 </ol>
 </div>
 
+<h3>나만의 플레이리스트로 랜덤, 한곡 플레이 등 있을 건 다 있는 플레이어</h3>
+<div></div>
 
+<h3>다른 사람이 만든 플레이리스트로 주제별 음악을 들을 수 있음</h3>
+<div></div>
 
+<h3>검색을 통해 원하는 음악, 가수, 앨범을 찾을 수 있음</h3>
+<div></div>
+
+<h3>귀엽고 키치한 디자인 ✨</h3>
+<div></div>
+</div>
 <br><br>
 
 
