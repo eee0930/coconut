@@ -59,7 +59,7 @@ export const AnimationBox = styled.span`
   transition: inherit;
   animation: 4s linear 0s infinite normal none running bURGXq;
 `;
-export const SideMenu = styled(BoxStyle)`
+export const SideMenuIn = styled(BoxStyle)`
   position: relative;
   max-height: 100%;
   z-index: 4;
@@ -228,4 +228,41 @@ export const SearchCover = styled.div`
     font-size: 1.2rem;
     transform: translateY(-50%);
   }
+`;
+
+
+
+export const MobileMenuContainer = styled.div`
+  background-color: ${props => props.theme.main3.main2};
+  width: 100vw;
+  height: ${props => props.theme.sideMenu.sm};
+  border-top: ${props => props.theme.boxLine.sm};
+`;
+
+export const MobileMenuCover = styled.div`
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  a { color: ${props=> props.theme.black.lighter}; }
+  a.active { color: ${props => props.theme.main1.main2}; }
+`;
+
+export const IconCover = styled.div`
+  margin-bottom: 5px;
+  font-size: 1.4rem;
+  position: relative;
+  .fa-music {
+    position: absolute;
+    font-size: 0.6em;
+    padding: 1px;
+    background-color: ${props => props.theme.main3.main2};
+    bottom: 1px;
+    right: 35%;
+  }
+`;
+
+export const MenuName = styled.div`
+  font-size: 0.8rem;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
 `;

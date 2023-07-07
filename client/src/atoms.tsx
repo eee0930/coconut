@@ -95,3 +95,18 @@ export const isDarkThemeState = atom({
   key: "defaultTheme",
   default: false,
 });
+
+/**
+ * 페이지 너비
+ */
+interface IOffset {
+  [key: string] : number;
+}
+export const offsetState = atom<IOffset>({
+  key: "offset",
+  default: {
+      pc: 1200,
+      tablet: 768,
+      mobile: 320,
+  }
+})

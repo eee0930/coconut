@@ -1,8 +1,7 @@
 // import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import CocoPlayer from "../components/CocoPlayer";
-import SideMenuForMobile from "../components/SideMenuForMobile";
-import SideMenuForPC from "../components/SideMenuForPC";
+import SideMenu from "../components/SideMenu";
 import { BaseLayoutContainer, CocoContainer, CocoMainContainer,
   BaseLayoutMenu, MobileSideMenuContainer, PageFadeIn } from "../utils/layoutStyles";
 
@@ -16,7 +15,7 @@ function Base() {
   return <>
   <BaseLayoutContainer>
     <BaseLayoutMenu className="col-md-auto d-none d-md-inline-block">
-     <SideMenuForPC />
+     <SideMenu />
     </BaseLayoutMenu> 
     <CocoMainContainer className="col-12 col-md">
       <CocoContainer>
@@ -29,7 +28,7 @@ function Base() {
   <CocoPlayer />
 
   <MobileSideMenuContainer>
-    <SideMenuForMobile />
+    <SideMenu />
   </MobileSideMenuContainer>
   {/* { pageFade ? <PageFadeIn /> : null } */}
   </>;
