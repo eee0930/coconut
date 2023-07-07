@@ -1,6 +1,6 @@
 # Coconut Music 🎵
 <div align="center">
-<img width="220px" src="https://github.com/eee0930/coconut/assets/37135523/4848eff1-217c-4fc7-a163-675c2ab26a0a" />
+<img width="220px" src="https://github.com/eee0930/coconut/assets/37135523/540ad143-e17e-4add-9b5d-ddb3c315ead8" />
 </div>
 
 
@@ -15,9 +15,9 @@
 ## Project Info
 ### Coconut Music을 만든 사람
 
-|[송화연](https://github.com/eee0930)|TMI|
+|[송화연](https://github.com/lazyhysong)|TMI|
 | :-: | - |
-|<img src="https://avatars.githubusercontent.com/u/37135523?v=4" width=150px><br />|- 프론트엔드 개발자를 지망하고 있습니다 👩‍💻<br />- 바닐라 자바스크립트로 코딩하는 것을 좋아합니다 🍨 <br />- 그림그리기와 영상찍기가 취미입니다 🎨<br />- 사람들과 잘 어울리는 INTP 😙<br />- 물리학을 전공했습니다 🐈‍⬛<br />- 새로운 지식과 문제를 분석하는 것을 좋아합니다 🔍|
+|<img src="https://avatars.githubusercontent.com/u/37135523?v=4" width=150px><br />|- 프론트엔드 개발자를 지망하고 있습니다 👩‍💻<br />- 바닐라 자바스크립트로 코딩하는 것을 좋아합니다 🍨 <br />- 그림그리기와 영상찍기가 취미입니다 🎨<br />- 밝은 INTP 😙<br />- 물리학을 전공했습니다 🐈‍⬛|
 
 ### 개발 기획안
 [https://placid-tortoise-06c.notion.site/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4](https://placid-tortoise-06c.notion.site/Coconut-Music-17582c5e421b4e1ca283498e224d8dec?pvs=4)
@@ -25,16 +25,15 @@
 ### 목표
 <ol>
   <li>유튜브에서 듣고싶은 음악을 검색하여 영상으로 음악을 듣는대신 나의 플레이리스트를 만들어 영상없이 원하는 음악을 들을 수 있도록 구현</li>
+  <li>메인화면에서 전세계적으로 인기있는 음악들을 매일 제공해줌</li>
   <li>다른 사람이 만든 플레이리스트로 주제별 음악을 들을 수 있도록 구현</li>
   <li>검색을 통해 원하는 음악, 가수, 앨범을 찾을 수 있도록 구현</li>
   <li>나의 플레이리스트를 직접 만들어 다른 사람들이 나의 음악을 들을 수 있도록 구현</li>
-  <li>Reactjs 프론트엔드 페이지와 Nodejs를 이용한 서버 연결 연습</li>
-  <li>API와 DB를 모두 이용하여 데이터를 출력하기 연습</li>
 </ol>
 
 ### 작업기간
-- **기획:** 2023-06-21 ~ 2023-06-25 
-- **개발:** 2023-06-25 ~ 
+- **기획:** 2023-05-20 ~ 2023-05-25 
+- **개발:** 2023-05-25 ~ 
 - **업데이트 및 버그수정:** 
 
 
@@ -148,16 +147,63 @@ $ npm run deploy
 
 ### Directory structure
 ```bash
- ┣ apis : 데이터를 가져올 api 페치 파일들
+ ┣ apis
+ ┃ ┣ deezerMusicApi.ts
+ ┃ ┣ localApi.ts
+ ┃ ┗ youtubeApi.ts
  ┣ components
- ┃ ┗ mixins : 데이터 값을 넣어야하며 여러 페이지에서 사용할 컴포넌트들
- ┣ layout : 레이아웃
- ┣ routes : route 변경에 따라 가져올 컴포넌트 페이지들
- ┣ services : DB 또는 api에서 가져온 데이터들을 가공하는 코드 파일들
+ ┃ ┣ mixins
+ ┃ ┃ ┣ Albums.tsx
+ ┃ ┃ ┣ Artists.tsx
+ ┃ ┃ ┣ Mixtapes.tsx
+ ┃ ┃ ┣ Musics.tsx
+ ┃ ┃ ┣ Playlists.tsx
+ ┃ ┃ ┗ Tracks.tsx
+ ┃ ┣ CocoButton.tsx
+ ┃ ┣ CocoPlayer.tsx
+ ┃ ┣ ErrorComponent.tsx
+ ┃ ┣ ListNewMixTape.tsx
+ ┃ ┣ ListTopTrack.tsx
+ ┃ ┣ SideMenuForMobile.tsx
+ ┃ ┣ SideMenuForPC.tsx
+ ┃ ┣ ThemeButton.tsx
+ ┃ ┗ Video.tsx
+ ┣ layout
+ ┃ ┣ Auth.tsx
+ ┃ ┗ Base.tsx
+ ┣ routes
+ ┃ ┣ Home.tsx
+ ┃ ┣ ListChart.tsx
+ ┃ ┣ ListMixTape.tsx
+ ┃ ┣ Login.tsx
+ ┃ ┣ NotFound.tsx
+ ┃ ┣ Search.tsx
+ ┃ ┣ ViewAlbum.tsx
+ ┃ ┣ ViewArtist.tsx
+ ┃ ┣ ViewMixtape.tsx
+ ┃ ┣ ViewMusic.tsx
+ ┃ ┗ ViewPlaylist.tsx
+ ┣ services
+ ┃ ┣ AlbumServiceImpl.ts
+ ┃ ┣ ArtistServiceImpl.ts
+ ┃ ┗ MusicServiceImpl.ts
  ┣ utils
- ┃ ┣ components : 공통적으로 사용할 컴포넌트 스타일
- ┃ ┣ data : default로 화면에 보여줄 데이터들
- ┃ ┗ screens : route 페이지 스타일
+ ┃ ┣ components
+ ┃ ┃ ┣ AlbumElementStyles.ts
+ ┃ ┃ ┣ ArtistElementStyles.ts
+ ┃ ┃ ┣ CocoPlayerStyles.ts
+ ┃ ┃ ┣ MusicElementsStyles.ts
+ ┃ ┃ ┗ SideMenuStyles.ts
+ ┃ ┣ data
+ ┃ ┃ ┗ defaultMusic.ts
+ ┃ ┣ screens
+ ┃ ┃ ┣ AlbumStyles.ts
+ ┃ ┃ ┣ HomeStyles.ts
+ ┃ ┃ ┗ ListChartStyles.ts
+ ┃ ┣ globalStyles.ts
+ ┃ ┣ layoutStyles.ts
+ ┃ ┣ styled.d.ts
+ ┃ ┗ theme.ts
  ┣ App.tsx
  ┣ Router.tsx
  ┣ atoms.tsx
