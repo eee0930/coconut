@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Button = styled.button`
   cursor: pointer;
@@ -8,12 +8,12 @@ const Button = styled.button`
   border: none;
   background-color: transparent;
   padding: 1.125em 2.5em 0.9375em;
-  font-family: ${props => props.theme.title}, cursive;
+  font-family: ${(props) => props.theme.title}, cursive;
   letter-spacing: -0.04em;
   word-spacing: 0.03em;
   font-stretch: 0.05em;
   font-size: 1.2rem;
-  color: ${props => props.theme.white.lighter};
+  color: ${(props) => props.theme.white.lighter};
 
   &:hover .button-front,
   &:focus .button-front {
@@ -24,27 +24,27 @@ const Button = styled.button`
 const ButtonStyle = styled.span`
   width: 100%;
   height: 100%;
-  border: ${props => props.theme.boxLine.sm};
+  border: ${(props) => props.theme.boxLine.sm};
   display: block;
   padding: 0.3rem 0 0.4rem;
   border-radius: 8px;
   position: absolute;
   @media (min-width: 768px) {
-    border: ${props => props.theme.boxLine.md};
+    border: ${(props) => props.theme.boxLine.md};
   }
   @media (min-width: 1200px) {
-    border: ${props => props.theme.boxLine.lg};
+    border: ${(props) => props.theme.boxLine.lg};
   }
 `;
 
 const ButtonBack = styled(ButtonStyle)`
-  background-color: ${props => props.theme.black.veryDark};
+  background-color: ${(props) => props.theme.black.veryDark};
   top: 3px;
   left: 3px;
   z-index: 0;
 `;
 const ButtonFront = styled(ButtonStyle)`
-  background-color: ${props => props.theme.main1.main1};
+  background-color: ${(props) => props.theme.main1.main1};
   text-align: center;
   top: 0;
   left: 0;
@@ -63,6 +63,6 @@ const CocoButton = ({ text }: ICocoButton) => {
       <ButtonFront className="button-front">{text}</ButtonFront>
     </Button>
   );
-}
+};
 
 export default CocoButton;
