@@ -48,7 +48,7 @@ function CocoPlayer() {
   const [controller, setController] = useRecoilState(controllerSettingState);
 
   // component states
-  const [cocoAudio, setCocoAudio] = useState(new Audio(''));
+  const [cocoAudio, setCocoAudio] = useState<HTMLAudioElement>();
   const [isLoading, setIsLoading] = useState(false);
   const [isPlay, setIsPlay] = useState(false); // 재생, 일시정지 여부 (버튼, 프로그래스 진행 표시하기 위해)
   const [isNewMusic, setIsNewMusic] = useState(true); // 이전 곡과 다른지 여부 (일시정지, 정지를 구분하기 위해)
@@ -163,19 +163,19 @@ function CocoPlayer() {
 
   const handleCanPlayThrough = () => {
     setIsPlay(true);
-    cocoAudio.play();
+    cocoAudio?.play();
   };
   const handleClickPlay = (isNewMusic: boolean) => {
     if (isNewMusic) {
       setIsNewMusic(false);
       try {
         // 음악 불러오기 실패
-        cocoAudio.addEventListener('error', handleLoadedData);
+        cocoAudio?.addEventListener('error', handleLoadedData);
         // 음악 불러오기 완료
-        cocoAudio.addEventListener('loadeddata', handleLoadedData);
-        cocoAudio.addEventListener('canplaythrough', handleCanPlayThrough);
-        cocoAudio.addEventListener('ended', handleEnded);
-        cocoAudio.load();
+        cocoAudio?.addEventListener('loadeddata', handleLoadedData);
+        cocoAudio?.addEventListener('canplaythrough', handleCanPlayThrough);
+        cocoAudio?.addEventListener('ended', handleEnded);
+        cocoAudio?.load();
       } catch (e) {
         console.error(e);
         alert('음악을 불러올 수 없습니다.');
@@ -194,7 +194,7 @@ function CocoPlayer() {
 
   const settingPause = () => {
     setIsPlay(false);
-    cocoAudio.pause();
+    cocoAudio?.pause();
   };
 
   const settingReset = () => {
