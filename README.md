@@ -1,6 +1,6 @@
 # Coconut Music 🎵
 <div align="center">
-<img width="220px" src="https://github.com/eee0930/coconut/assets/37135523/540ad143-e17e-4add-9b5d-ddb3c315ead8" />
+<img width="220px" src="https://github.com/eee0930/coconut/assets/37135523/1cd87edc-1745-4fc6-9e00-973b8bdda0d8" />
 </div>
 
 
@@ -15,7 +15,7 @@
 ## Project Info
 ### Coconut Music을 만든 사람
 
-|[송화연](https://github.com/lazyhysong)|TMI|
+|[송화연](https://github.com/eee0930)|TMI|
 | :-: | - |
 |<img src="https://avatars.githubusercontent.com/u/37135523?v=4" width=150px><br />|- 프론트엔드 개발자를 지망하고 있습니다 👩‍💻<br />- 바닐라 자바스크립트로 코딩하는 것을 좋아합니다 🍨 <br />- 그림그리기와 영상찍기가 취미입니다 🎨<br />- 밝은 INTP 😙<br />- 물리학을 전공했습니다 🐈‍⬛|
 
