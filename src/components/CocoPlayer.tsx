@@ -11,6 +11,7 @@ import {
   isLoggedInState,
   INowPlaying,
 } from '../atoms';
+import { designTime } from '../hooks/designTime';
 // styles
 import { Loader } from '../utils/globalStyles';
 import {
@@ -23,22 +24,6 @@ import {
   ControllerCover,
   ControlOthers,
 } from '../utils/components/CocoPlayerStyles';
-
-const designTime = (time: number) => {
-  time = Number.isNaN(time) ? 0 : time;
-  const seconds = String((time * 1) % 60).padStart(2, '0');
-  let [minutes, hours] = ['', ''];
-  let displayTime = `00:${seconds}`;
-  if (time >= 60) {
-    minutes = String(Math.floor(time / 60) % 60).padStart(2, '0');
-    displayTime = `${minutes}:${seconds}`;
-  }
-  if (time >= 3600) {
-    hours = String(Math.floor(time / 3600)).padStart(2, '0');
-    displayTime = `${hours}:${minutes}:${seconds}`;
-  }
-  return displayTime;
-};
 
 function CocoPlayer() {
   // recoil states
@@ -88,8 +73,7 @@ function CocoPlayer() {
     } else {
       clearInterval(playTime);
     }
-    const clearTime = () => clearInterval(playTime);
-    return clearTime;
+    return () => clearInterval(playTime);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlay]);
 
@@ -348,7 +332,7 @@ function CocoPlayer() {
           </div>
         </Loader>
       )}
-      {!isLoggedIn && (
+      {!isLoggedIn && isPlay && (
         <Modal
           title={'Login required 😙'}
           msg={'30초 미리 듣기가 제공됩니다.'}

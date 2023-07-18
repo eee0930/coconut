@@ -18,12 +18,11 @@ export interface IVideoIdResults {
   items: IVideoIdItem[];
 }
 
-
-const fetchResponseData = (url: string) => {
+export const fetchResponseData = (url: string) => {
   try {
-    return fetch(url).then(response => response.json());
+    return fetch(url).then((response) => response.json());
   } catch (error: any) {
-    console.error("🛑", error.message);
+    console.error('🛑', error.message);
     throw error;
   }
 };
@@ -31,5 +30,4 @@ const fetchResponseData = (url: string) => {
 export const fetchVideoIdsByQuery = (q: string) => {
   const url = `${API_ROOT}search?key=${API_KEY}&type=video&q=${q}`;
   return fetchResponseData(url);
-}
- 
+};
