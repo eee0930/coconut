@@ -22,7 +22,9 @@ function Modal({ title, msg, isAuto }: IModal) {
         setShowModal(false);
         clearTimeout(timeout);
       }, 1500);
+      return () => clearTimeout(timeout);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCloseModal = () => setShowModal(false);
