@@ -18,16 +18,18 @@ export interface IVideoIdResults {
   items: IVideoIdItem[];
 }
 
-export const fetchResponseData = (url: string) => {
+const fetchResponseData = async (url: string) => {
   try {
-    return fetch(url).then((response) => response.json());
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
   } catch (error: any) {
     console.error('🛑', error.message);
     throw error;
   }
 };
 
-export const fetchVideoIdsByQuery = (q: string) => {
+export const fetchVideoIdsByQuery = async (q: string) => {
   const url = `${API_ROOT}search?key=${API_KEY}&type=video&q=${q}`;
-  return fetchResponseData(url);
+  return await fetchResponseData(url);
 };
